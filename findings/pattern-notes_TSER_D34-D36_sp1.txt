@@ -1,0 +1,1472 @@
+Header:
+
+Pattern 0:
+Name: 'Electro1'
+
+Pattern 1:
+Name: 'PrgHous1'
+
+Pattern 2:
+Name: 'HardHs1 '
+
+Pattern 3:
+Name: 'UKHouse1'
+
+Pattern 4:
+Name: 'House1  '
+
+Pattern 5:
+Name: 'GarageH1'
+
+Pattern 6:
+Name: 'FJazz1  '
+
+Pattern 7:
+Name: 'NuSklBr1'
+
+Pattern 8:
+Name: 'NuSklBr2'
+
+Pattern 9:
+Name: 'DnB1    '
+
+Pattern 10:
+Name: 'DnB2    '
+
+Pattern 11:
+Name: 'DnB3    '
+
+Pattern 12:
+Name: 'DnB4    '
+
+Pattern 13:
+Name: 'HipHop1 '
+
+Pattern 14:
+Name: 'HipHop2 '
+
+Pattern 15:
+Name: 'HipHop3 '
+
+Pattern 16:
+Name: 'Trance1 '
+
+Pattern 17:
+Name: 'Trance2 '
+
+Pattern 18:
+Name: 'Trance3 '
+
+Pattern 19:
+Name: 'HTrance1'
+
+Pattern 20:
+Name: 'PsyTrnc1'
+
+Pattern 21:
+Name: 'Techno1 '
+
+Pattern 22:
+Name: 'Techno2 '
+
+Pattern 23:
+Name: 'Minimal1'
+
+Pattern 24:
+Name: '2Step1  '
+
+Pattern 25:
+Name: '2Step2  '
+
+Pattern 26:
+Name: 'R&B1    '
+
+Pattern 27:
+Name: 'R&B2    '
+
+Pattern 28:
+Name: 'Funk1   '
+
+Pattern 29:
+Name: 'DownTmp1'
+
+Pattern 30:
+Name: 'AmbiHs1 '
+
+Pattern 31:
+Name: 'IDM1    '
+
+Pattern 32:
+Name: 'Techno3 '
+
+Pattern 33:
+Name: 'Techno4 '
+
+Pattern 34:
+Name: 'Techno5 '
+
+Pattern 35:
+Name: 'Techno6 '
+
+Pattern 36:
+Name: 'Techno7 '
+
+Pattern 37:
+Name: 'Techno8 '
+
+Pattern 38:
+Name: 'Techno9 '
+
+Pattern 39:
+Name: 'Techno10'
+
+Pattern 40:
+Name: 'Electro2'
+
+Pattern 41:
+Name: 'Electro3'
+
+Pattern 42:
+Name: 'Electro4'
+
+Pattern 43:
+Name: 'Electro5'
+
+Pattern 44:
+Name: 'Electro6'
+
+Pattern 45:
+Name: 'IDM2    '
+
+Pattern 46:
+Name: 'IDM3    '
+
+Pattern 47:
+Name: 'IDM4    '
+
+Pattern 48:
+Name: 'IDM5    '
+
+Pattern 49:
+Name: 'IDM6    '
+
+Pattern 50:
+Name: 'IDM7    '
+
+Pattern 51:
+Name: 'IDM8    '
+
+Pattern 52:
+Name: 'Minimal2'
+
+Pattern 53:
+Name: 'Minimal3'
+
+Pattern 54:
+Name: 'Minimal4'
+
+Pattern 55:
+Name: 'Minimal5'
+
+Pattern 56:
+Name: 'Minimal6'
+
+Pattern 57:
+Name: 'DnB5    '
+
+Pattern 58:
+Name: 'DnB6    '
+
+Pattern 59:
+Name: 'DnB7    '
+
+Pattern 60:
+Name: 'DnB8    '
+
+Pattern 61:
+Name: 'DnB9    '
+
+Pattern 62:
+Name: 'DnB10   '
+
+Pattern 63:
+Name: 'DnB11   '
+
+Pattern 64:
+Name: 'DnB12   '
+
+Pattern 65:
+Name: 'DnB13   '
+
+Pattern 66:
+Name: 'DnB14   '
+
+Pattern 67:
+Name: 'DnB15   '
+
+Pattern 68:
+Name: 'DnB16   '
+
+Pattern 69:
+Name: 'DnB17   '
+
+Pattern 70:
+Name: 'DnB18   '
+
+Pattern 71:
+Name: 'DnB19   '
+
+Pattern 72:
+Name: 'DnB20   '
+
+Pattern 73:
+Name: 'DnB21   '
+
+Pattern 74:
+Name: 'DnB22   '
+
+Pattern 75:
+Name: 'DnB23   '
+
+Pattern 76:
+Name: 'DnB24   '
+
+Pattern 77:
+Name: 'DnB25   '
+
+Pattern 78:
+Name: 'DnB26   '
+
+Pattern 79:
+Name: 'Trance4 '
+
+Pattern 80:
+Name: 'Trance5 '
+
+Pattern 81:
+Name: 'Trance6 '
+
+Pattern 82:
+Name: 'Trance7 '
+
+Pattern 83:
+Name: 'Trance8 '
+
+Pattern 84:
+Name: 'Trance9 '
+
+Pattern 85:
+Name: 'Trance10'
+
+Pattern 86:
+Name: 'Trance11'
+
+Pattern 87:
+Name: 'Trance12'
+
+Pattern 88:
+Name: 'Trance13'
+
+Pattern 89:
+Name: 'Trance14'
+
+Pattern 90:
+Name: 'Trance15'
+
+Pattern 91:
+Name: 'Trance16'
+
+Pattern 92:
+Name: 'HTrance2'
+
+Pattern 93:
+Name: 'HTrance3'
+
+Pattern 94:
+Name: 'HTrance4'
+
+Pattern 95:
+Name: 'HTrance5'
+
+Pattern 96:
+Name: 'PsyTrnc2'
+
+Pattern 97:
+Name: 'PsyTrnc3'
+
+Pattern 98:
+Name: 'PsyTrnc4'
+
+Pattern 99:
+Name: 'PsyTrnc5'
+
+Pattern 100:
+Name: 'House2  '
+
+Pattern 101:
+Name: 'House3  '
+
+Pattern 102:
+Name: 'House4  '
+
+Pattern 103:
+Name: 'House5  '
+
+Pattern 104:
+Name: 'House6  '
+
+Pattern 105:
+Name: 'House7  '
+
+Pattern 106:
+Name: 'House8  '
+
+Pattern 107:
+Name: 'House9  '
+
+Pattern 108:
+Name: 'House10 '
+
+Pattern 109:
+Name: 'GarageH2'
+
+Pattern 110:
+Name: 'GarageH3'
+
+Pattern 111:
+Name: 'GarageH4'
+
+Pattern 112:
+Name: 'GarageH5'
+
+Pattern 113:
+Name: 'GarageH6'
+
+Pattern 114:
+Name: 'GarageH7'
+
+Pattern 115:
+Name: 'GarageH8'
+
+Pattern 116:
+Name: 'UKHouse2'
+
+Pattern 117:
+Name: 'UKHouse3'
+
+Pattern 118:
+Name: 'UKHouse4'
+
+Pattern 119:
+Name: 'UKHouse5'
+
+Pattern 120:
+Name: 'UKHouse6'
+
+Pattern 121:
+Name: 'PrgHous2'
+
+Pattern 122:
+Name: 'PrgHous3'
+
+Pattern 123:
+Name: 'PrgHous4'
+
+Pattern 124:
+Name: 'PrgHous5'
+
+Pattern 125:
+Name: 'HardHs2 '
+
+Pattern 126:
+Name: 'HardHs3 '
+
+Pattern 127:
+Name: 'HardHs4 '
+
+Pattern 128:
+Name: 'HardHs5 '
+
+Pattern 129:
+Name: 'HardHs6 '
+
+Pattern 130:
+Name: 'Gabba1  '
+
+Pattern 131:
+Name: '2Step3  '
+
+Pattern 132:
+Name: '2Step4  '
+
+Pattern 133:
+Name: '2Step5  '
+
+Pattern 134:
+Name: '2Step6  '
+
+Pattern 135:
+Name: '2Step7  '
+
+Pattern 136:
+Name: '2Step8  '
+
+Pattern 137:
+Name: '2Step9  '
+
+Pattern 138:
+Name: 'NuSklBr3'
+
+Pattern 139:
+Name: 'NuSklBr4'
+
+Pattern 140:
+Name: 'NuSklBr5'
+
+Pattern 141:
+Name: 'NuSklBr6'
+
+Pattern 142:
+Name: 'NuSklBr7'
+
+Pattern 143:
+Name: 'NuSklBr8'
+
+Pattern 144:
+Name: 'NuSklBr9'
+
+Pattern 145:
+Name: 'NuSklB10'
+
+Pattern 146:
+Name: 'NuSklB11'
+
+Pattern 147:
+Name: 'NuSklB12'
+
+Pattern 148:
+Name: 'HipHop4 '
+
+Pattern 149:
+Name: 'HipHop5 '
+
+Pattern 150:
+Name: 'HipHop6 '
+
+Pattern 151:
+Name: 'HipHop7 '
+
+Pattern 152:
+Name: 'HipHop8 '
+
+Pattern 153:
+Name: 'HipHop9 '
+
+Pattern 154:
+Name: 'HipHop10'
+
+Pattern 155:
+Name: 'HipHop11'
+
+Pattern 156:
+Name: 'HipHop12'
+
+Pattern 157:
+Name: 'HipHop13'
+
+Pattern 158:
+Name: 'HipHop14'
+
+Pattern 159:
+Name: 'HipHop15'
+
+Pattern 160:
+Name: 'HipHop16'
+
+Pattern 161:
+Name: 'HipHop17'
+
+Pattern 162:
+Name: 'HipHop18'
+
+Pattern 163:
+Name: 'HipHop19'
+
+Pattern 164:
+Name: 'HipHop20'
+
+Pattern 165:
+Name: 'HipHop21'
+
+Pattern 166:
+Name: 'R&B3    '
+
+Pattern 167:
+Name: 'R&B4    '
+
+Pattern 168:
+Name: 'R&B5    '
+
+Pattern 169:
+Name: 'R&B6    '
+
+Pattern 170:
+Name: 'R&B7    '
+
+Pattern 171:
+Name: 'R&B8    '
+
+Pattern 172:
+Name: 'R&B9    '
+
+Pattern 173:
+Name: 'Funk2   '
+
+Pattern 174:
+Name: 'Funk3   '
+
+Pattern 175:
+Name: 'Funk4   '
+
+Pattern 176:
+Name: 'FJazz2  '
+
+Pattern 177:
+Name: 'FJazz3  '
+
+Pattern 178:
+Name: 'FJazz4  '
+
+Pattern 179:
+Name: 'DownTmp2'
+
+Pattern 180:
+Name: 'DownTmp3'
+
+Pattern 181:
+Name: 'DownTmp4'
+
+Pattern 182:
+Name: 'DownTmp5'
+
+Pattern 183:
+Name: 'DownTmp6'
+
+Pattern 184:
+Name: 'DownTmp7'
+
+Pattern 185:
+Name: 'AmbiHs2 '
+
+Pattern 186:
+Name: 'AmbiHs3 '
+
+Pattern 187:
+Name: 'AmbiHs4 '
+
+Pattern 188:
+Name: 'AmbiHs5 '
+
+Pattern 189:
+Name: 'AmbiHs6 '
+
+Pattern 190:
+Name: 'Dub1    '
+
+Pattern 191:
+Name: 'ER-1    '
+
+Pattern 192:
+Name: 'Demo1-1 '
+
+Pattern 193:
+Name: 'Demo1-2 '
+
+Pattern 194:
+Name: 'Demo1-3 '
+
+Pattern 195:
+Name: 'Demo1-4 '
+
+Pattern 196:
+Name: 'Demo1-5 '
+
+Pattern 197:
+Name: 'Demo1-6 '
+
+Pattern 198:
+Name: 'Demo2-1 '
+
+Pattern 199:
+Name: 'Demo2-2 '
+
+Pattern 200:
+Name: 'Demo2-3 '
+
+Pattern 201:
+Name: 'Demo2-4 '
+
+Pattern 202:
+Name: 'Demo3-1 '
+
+Pattern 203:
+Name: 'Demo3-2 '
+
+Pattern 204:
+Name: 'Demo3-3 '
+
+Pattern 205:
+Name: 'Demo4-1 '
+
+Pattern 206:
+Name: 'Demo4-2 '
+
+Pattern 207:
+Name: 'Demo4-3 '
+
+Pattern 208:
+Name: 'Demo4-4 '
+
+Pattern 209:
+Name: 'Demo4-5 '
+
+Pattern 210:
+Name: 'Demo4-6 '
+
+Pattern 211:
+Name: 'Demo4-7 '
+
+Pattern 212:
+Name: 'Demo4-8 '
+
+Pattern 213:
+Name: 'Demo5-1 '
+
+Pattern 214:
+Name: 'Demo5-2 '
+
+Pattern 215:
+Name: 'Demo5-3 '
+
+Pattern 216:
+Name: 'Demo5-4 '
+
+Pattern 217:
+Name: 'Demo5-5 '
+
+Pattern 218:
+Name: 'Demo5-6 '
+
+Pattern 219:
+Name: 'Demo5-7 '
+
+Pattern 220:
+Name: 'Demo6-1 '
+
+Pattern 221:
+Name: 'Demo6-2 '
+
+Pattern 222:
+Name: 'Demo6-3 '
+
+Pattern 223:
+Name: 'Demo6-4 '
+
+Pattern 224:
+Name: 'Init    '
+
+Pattern 225:
+Name: 'DP1t    '
+
+Pattern 226:
+Name: 'SP1t    '
+
+Pattern 227:
+Name: 'SP1t!   '
+
+Pattern 228:
+Name: 'Init    '
+
+Pattern 229:
+Name: 'Init    '
+
+Pattern 230:
+Name: 'Init    '
+
+Pattern 231:
+Name: 'Init    '
+
+Pattern 232:
+Name: 'Init    '
+
+Pattern 233:
+Name: 'Init    '
+
+Pattern 234:
+Name: 'Init    '
+
+Pattern 235:
+Name: 'Init    '
+
+Pattern 236:
+Name: 'Init    '
+
+Pattern 237:
+Name: 'Init    '
+
+Pattern 238:
+Name: 'Init    '
+
+Pattern 239:
+Name: 'Init    '
+
+Pattern 240:
+Name: 'Init    '
+
+Pattern 241:
+Name: 'Init    '
+
+Pattern 242:
+Name: 'Init    '
+
+Pattern 243:
+Name: 'Init    '
+
+Pattern 244:
+Name: 'Init    '
+
+Pattern 245:
+Name: 'Init    '
+
+Pattern 246:
+Name: 'Init    '
+
+Pattern 247:
+Name: 'Init    '
+
+Pattern 248:
+Name: 'Init    '
+
+Pattern 249:
+Name: 'Init    '
+
+Pattern 250:
+Name: 'Init    '
+
+Pattern 251:
+Name: 'Init    '
+
+Pattern 252:
+Name: 'Init    '
+
+Pattern 253:
+Name: 'Init    '
+
+Pattern 254:
+Name: 'Init    '
+
+Pattern 255:
+Name: 'Init    '
+
+
+
+
+
+
+
+
+
+
+
+
+Pattern names differ: Init     vs SP1t!   
+Difference at byte 7: Pattern1[007]:3c vs Pattern2[007]:4b
+00111100 
+01001011 
+
+
+Synth Part 1
+
+1.01 C4 On
+Difference at byte 270: Pattern1[270]:bc vs Pattern2[270]:3c
+10111100 
+00111100 
+
+1.02 C#4 On
+Difference at byte 271: Pattern1[271]:bc vs Pattern2[271]:3d
+10111100 
+00111101 
+
+1.03 D4 On
+Difference at byte 272: Pattern1[272]:bc vs Pattern2[272]:3e
+10111100 
+00111110 
+
+1.04 D#4 On
+Difference at byte 273: Pattern1[273]:bc vs Pattern2[273]:3f
+10111100 
+00111111 
+
+1.05 E4 On
+Difference at byte 274: Pattern1[274]:bc vs Pattern2[274]:40
+10111100 
+01000000 
+
+1.06 F4 On
+Difference at byte 275: Pattern1[275]:bc vs Pattern2[275]:41
+10111100 
+01000001 
+
+1.07 F#4 On
+Difference at byte 276: Pattern1[276]:bc vs Pattern2[276]:42
+10111100 
+01000010 
+
+1.08 G4 On
+Difference at byte 277: Pattern1[277]:bc vs Pattern2[277]:43
+10111100 
+01000011 
+
+1.09 G#5 Off
+Difference at byte 278: Pattern1[278]:bc vs Pattern2[278]:c4
+10111100 
+11000100 
+
+1.10 A4 Off
+Difference at byte 279: Pattern1[279]:bc vs Pattern2[279]:c5
+10111100 
+11000101 
+
+1.11 A#4 Off
+Difference at byte 280: Pattern1[280]:bc vs Pattern2[280]:c6
+10111100 
+11000110 
+
+1.12 B4 Off
+Difference at byte 281: Pattern1[281]:bc vs Pattern2[281]:c7
+10111100 
+11000111 
+
+1.13 C5 Off
+Difference at byte 282: Pattern1[282]:bc vs Pattern2[282]:c8
+10111100 
+11001000 
+
+1.14 C#5 Off
+Difference at byte 283: Pattern1[283]:bc vs Pattern2[283]:c9
+10111100 
+11001001 
+
+1.15 D5 Off
+Difference at byte 284: Pattern1[284]:bc vs Pattern2[284]:ca
+10111100 
+11001010 
+
+1.16 D# Off
+Difference at byte 285: Pattern1[285]:bc vs Pattern2[285]:cb
+10111100 
+11001011 
+
+
+
+Even though patern length is set to 1, could be duplicating across the other seven note banks (1-8)
+
+2.01
+Difference at byte 286: Pattern1[286]:bc vs Pattern2[286]:3c
+10111100 
+00111100 
+
+2.02
+Difference at byte 287: Pattern1[287]:bc vs Pattern2[287]:3d
+10111100 
+00111101 
+
+2.03
+Difference at byte 288: Pattern1[288]:bc vs Pattern2[288]:3e
+10111100 
+00111110 
+
+2.04
+Difference at byte 289: Pattern1[289]:bc vs Pattern2[289]:3f
+10111100 
+00111111 
+
+2.05
+Difference at byte 290: Pattern1[290]:bc vs Pattern2[290]:40
+10111100 
+01000000 
+
+2.06
+Difference at byte 291: Pattern1[291]:bc vs Pattern2[291]:41
+10111100 
+01000001 
+
+2.07
+Difference at byte 292: Pattern1[292]:bc vs Pattern2[292]:42
+10111100 
+01000010 
+
+2.08
+Difference at byte 293: Pattern1[293]:bc vs Pattern2[293]:43
+10111100 
+01000011 
+
+2.09
+Difference at byte 294: Pattern1[294]:bc vs Pattern2[294]:c4
+10111100 
+11000100 
+
+2.10
+Difference at byte 295: Pattern1[295]:bc vs Pattern2[295]:c5
+10111100 
+11000101 
+
+2.11
+Difference at byte 296: Pattern1[296]:bc vs Pattern2[296]:c6
+10111100 
+11000110 
+
+2.12
+Difference at byte 297: Pattern1[297]:bc vs Pattern2[297]:c7
+10111100 
+11000111 
+
+2.13
+Difference at byte 298: Pattern1[298]:bc vs Pattern2[298]:c8
+10111100 
+11001000 
+
+2.14
+Difference at byte 299: Pattern1[299]:bc vs Pattern2[299]:c9
+10111100 
+11001001 
+
+2.15
+Difference at byte 300: Pattern1[300]:bc vs Pattern2[300]:ca
+10111100 
+11001010 
+
+2.16
+Difference at byte 301: Pattern1[301]:bc vs Pattern2[301]:cb
+10111100 
+11001011 
+
+3.01
+Difference at byte 302: Pattern1[302]:bc vs Pattern2[302]:3c
+10111100 
+00111100 
+
+3.02
+Difference at byte 303: Pattern1[303]:bc vs Pattern2[303]:3d
+10111100 
+00111101 
+
+3.03
+Difference at byte 304: Pattern1[304]:bc vs Pattern2[304]:3e
+10111100 
+00111110 
+
+3.04
+Difference at byte 305: Pattern1[305]:bc vs Pattern2[305]:3f
+10111100 
+00111111 
+
+3.05
+Difference at byte 306: Pattern1[306]:bc vs Pattern2[306]:40
+10111100 
+01000000 
+
+3.06
+Difference at byte 307: Pattern1[307]:bc vs Pattern2[307]:41
+10111100 
+01000001 
+
+3.07
+Difference at byte 308: Pattern1[308]:bc vs Pattern2[308]:42
+10111100 
+01000010 
+
+3.08
+Difference at byte 309: Pattern1[309]:bc vs Pattern2[309]:43
+10111100 
+01000011 
+
+3.09
+Difference at byte 310: Pattern1[310]:bc vs Pattern2[310]:c4
+10111100 
+11000100 
+
+3.10
+Difference at byte 311: Pattern1[311]:bc vs Pattern2[311]:c5
+10111100 
+11000101 
+
+3.11
+Difference at byte 312: Pattern1[312]:bc vs Pattern2[312]:c6
+10111100 
+11000110 
+
+3.12
+Difference at byte 313: Pattern1[313]:bc vs Pattern2[313]:c7
+10111100 
+11000111 
+
+3.13
+Difference at byte 314: Pattern1[314]:bc vs Pattern2[314]:c8
+10111100 
+11001000 
+
+3.14
+Difference at byte 315: Pattern1[315]:bc vs Pattern2[315]:c9
+10111100 
+11001001 
+
+3.15
+Difference at byte 316: Pattern1[316]:bc vs Pattern2[316]:ca
+10111100 
+11001010 
+
+3.16
+Difference at byte 317: Pattern1[317]:bc vs Pattern2[317]:cb
+10111100 
+11001011 
+
+4.01
+Difference at byte 318: Pattern1[318]:bc vs Pattern2[318]:3c
+10111100 
+00111100 
+
+4.02
+Difference at byte 319: Pattern1[319]:bc vs Pattern2[319]:3d
+10111100 
+00111101 
+
+4.03
+Difference at byte 320: Pattern1[320]:bc vs Pattern2[320]:3e
+10111100 
+00111110 
+
+4.04
+Difference at byte 321: Pattern1[321]:bc vs Pattern2[321]:3f
+10111100 
+00111111 
+
+4.05
+Difference at byte 322: Pattern1[322]:bc vs Pattern2[322]:40
+10111100 
+01000000 
+
+4.06
+Difference at byte 323: Pattern1[323]:bc vs Pattern2[323]:41
+10111100 
+01000001 
+
+4.07
+Difference at byte 324: Pattern1[324]:bc vs Pattern2[324]:42
+10111100 
+01000010 
+
+4.08
+Difference at byte 325: Pattern1[325]:bc vs Pattern2[325]:43
+10111100 
+01000011 
+
+4.09
+Difference at byte 326: Pattern1[326]:bc vs Pattern2[326]:c4
+10111100 
+11000100 
+
+4.10
+Difference at byte 327: Pattern1[327]:bc vs Pattern2[327]:c5
+10111100 
+11000101 
+
+4.11
+Difference at byte 328: Pattern1[328]:bc vs Pattern2[328]:c6
+10111100 
+11000110 
+
+4.12
+Difference at byte 329: Pattern1[329]:bc vs Pattern2[329]:c7
+10111100 
+11000111 
+
+4.13
+Difference at byte 330: Pattern1[330]:bc vs Pattern2[330]:c8
+10111100 
+11001000 
+
+4.14
+Difference at byte 331: Pattern1[331]:bc vs Pattern2[331]:c9
+10111100 
+11001001 
+
+4.15
+Difference at byte 332: Pattern1[332]:bc vs Pattern2[332]:ca
+10111100 
+11001010 
+
+4.16
+Difference at byte 333: Pattern1[333]:bc vs Pattern2[333]:cb
+10111100 
+11001011 
+
+5.01
+Difference at byte 334: Pattern1[334]:bc vs Pattern2[334]:3c
+10111100 
+00111100 
+
+5.02
+Difference at byte 335: Pattern1[335]:bc vs Pattern2[335]:3d
+10111100 
+00111101 
+
+5.03
+Difference at byte 336: Pattern1[336]:bc vs Pattern2[336]:3e
+10111100 
+00111110 
+
+5.04
+Difference at byte 337: Pattern1[337]:bc vs Pattern2[337]:3f
+10111100 
+00111111 
+
+5.05
+Difference at byte 338: Pattern1[338]:bc vs Pattern2[338]:40
+10111100 
+01000000 
+
+5.06
+Difference at byte 339: Pattern1[339]:bc vs Pattern2[339]:41
+10111100 
+01000001 
+
+5.07
+Difference at byte 340: Pattern1[340]:bc vs Pattern2[340]:42
+10111100 
+01000010 
+
+5.08
+Difference at byte 341: Pattern1[341]:bc vs Pattern2[341]:43
+10111100 
+01000011 
+
+5.09
+Difference at byte 342: Pattern1[342]:bc vs Pattern2[342]:c4
+10111100 
+11000100 
+
+5.10
+Difference at byte 343: Pattern1[343]:bc vs Pattern2[343]:c5
+10111100 
+11000101 
+
+5.11
+Difference at byte 344: Pattern1[344]:bc vs Pattern2[344]:c6
+10111100 
+11000110 
+
+5.12
+Difference at byte 345: Pattern1[345]:bc vs Pattern2[345]:c7
+10111100 
+11000111 
+
+5.13
+Difference at byte 346: Pattern1[346]:bc vs Pattern2[346]:c8
+10111100 
+11001000 
+
+5.14
+Difference at byte 347: Pattern1[347]:bc vs Pattern2[347]:c9
+10111100 
+11001001 
+
+5.15
+Difference at byte 348: Pattern1[348]:bc vs Pattern2[348]:ca
+10111100 
+11001010 
+
+5.16
+Difference at byte 349: Pattern1[349]:bc vs Pattern2[349]:cb
+10111100 
+11001011 
+
+6.01
+Difference at byte 350: Pattern1[350]:bc vs Pattern2[350]:3c
+10111100 
+00111100 
+
+6.02
+Difference at byte 351: Pattern1[351]:bc vs Pattern2[351]:3d
+10111100 
+00111101 
+
+6.03
+Difference at byte 352: Pattern1[352]:bc vs Pattern2[352]:3e
+10111100 
+00111110 
+
+6.04
+Difference at byte 353: Pattern1[353]:bc vs Pattern2[353]:3f
+10111100 
+00111111 
+
+6.05
+Difference at byte 354: Pattern1[354]:bc vs Pattern2[354]:40
+10111100 
+01000000 
+
+6.06
+Difference at byte 355: Pattern1[355]:bc vs Pattern2[355]:41
+10111100 
+01000001 
+
+6.07
+Difference at byte 356: Pattern1[356]:bc vs Pattern2[356]:42
+10111100 
+01000010 
+
+6.08
+Difference at byte 357: Pattern1[357]:bc vs Pattern2[357]:43
+10111100 
+01000011 
+
+6.09
+Difference at byte 358: Pattern1[358]:bc vs Pattern2[358]:c4
+10111100 
+11000100 
+
+6.10
+Difference at byte 359: Pattern1[359]:bc vs Pattern2[359]:c5
+10111100 
+11000101 
+
+6.11
+Difference at byte 360: Pattern1[360]:bc vs Pattern2[360]:c6
+10111100 
+11000110 
+
+6.12
+Difference at byte 361: Pattern1[361]:bc vs Pattern2[361]:c7
+10111100 
+11000111 
+
+6.13
+Difference at byte 362: Pattern1[362]:bc vs Pattern2[362]:c8
+10111100 
+11001000 
+
+6.14
+Difference at byte 363: Pattern1[363]:bc vs Pattern2[363]:c9
+10111100 
+11001001 
+
+6.15
+Difference at byte 364: Pattern1[364]:bc vs Pattern2[364]:ca
+10111100 
+11001010 
+
+6.16
+Difference at byte 365: Pattern1[365]:bc vs Pattern2[365]:cb
+10111100 
+11001011 
+
+1
+Difference at byte 366: Pattern1[366]:bc vs Pattern2[366]:3c
+10111100 
+00111100 
+
+2
+Difference at byte 367: Pattern1[367]:bc vs Pattern2[367]:3d
+10111100 
+00111101 
+
+3
+Difference at byte 368: Pattern1[368]:bc vs Pattern2[368]:3e
+10111100 
+00111110 
+
+4
+Difference at byte 369: Pattern1[369]:bc vs Pattern2[369]:3f
+10111100 
+00111111 
+
+5
+Difference at byte 370: Pattern1[370]:bc vs Pattern2[370]:40
+10111100 
+01000000 
+
+6
+Difference at byte 371: Pattern1[371]:bc vs Pattern2[371]:41
+10111100 
+01000001 
+
+7
+Difference at byte 372: Pattern1[372]:bc vs Pattern2[372]:42
+10111100 
+01000010 
+
+8
+Difference at byte 373: Pattern1[373]:bc vs Pattern2[373]:43
+10111100 
+01000011 
+
+9
+Difference at byte 374: Pattern1[374]:bc vs Pattern2[374]:c4
+10111100 
+11000100 
+
+10
+Difference at byte 375: Pattern1[375]:bc vs Pattern2[375]:c5
+10111100 
+11000101 
+
+11
+Difference at byte 376: Pattern1[376]:bc vs Pattern2[376]:c6
+10111100 
+11000110 
+
+12
+Difference at byte 377: Pattern1[377]:bc vs Pattern2[377]:c7
+10111100 
+11000111 
+
+13
+Difference at byte 378: Pattern1[378]:bc vs Pattern2[378]:c8
+10111100 
+11001000 
+
+14
+Difference at byte 379: Pattern1[379]:bc vs Pattern2[379]:c9
+10111100 
+11001001 
+
+15
+Difference at byte 380: Pattern1[380]:bc vs Pattern2[380]:ca
+10111100 
+11001010 
+
+16
+Difference at byte 381: Pattern1[381]:bc vs Pattern2[381]:cb
+10111100 
+11001011 
+
+1
+Difference at byte 382: Pattern1[382]:bc vs Pattern2[382]:3c
+10111100 
+00111100 
+
+2
+Difference at byte 383: Pattern1[383]:bc vs Pattern2[383]:3d
+10111100 
+00111101 
+
+3
+Difference at byte 384: Pattern1[384]:bc vs Pattern2[384]:3e
+10111100 
+00111110 
+
+4
+Difference at byte 385: Pattern1[385]:bc vs Pattern2[385]:3f
+10111100 
+00111111 
+
+5
+Difference at byte 386: Pattern1[386]:bc vs Pattern2[386]:40
+10111100 
+01000000 
+
+6
+Difference at byte 387: Pattern1[387]:bc vs Pattern2[387]:41
+10111100 
+01000001 
+
+7
+Difference at byte 388: Pattern1[388]:bc vs Pattern2[388]:42
+10111100 
+01000010 
+
+8
+Difference at byte 389: Pattern1[389]:bc vs Pattern2[389]:43
+10111100 
+01000011 
+
+9
+Difference at byte 390: Pattern1[390]:bc vs Pattern2[390]:c4
+10111100 
+11000100 
+
+10
+Difference at byte 391: Pattern1[391]:bc vs Pattern2[391]:c5
+10111100 
+11000101 
+
+11
+Difference at byte 392: Pattern1[392]:bc vs Pattern2[392]:c6
+10111100 
+11000110 
+
+12
+Difference at byte 393: Pattern1[393]:bc vs Pattern2[393]:c7
+10111100 
+11000111 
+
+13
+Difference at byte 394: Pattern1[394]:bc vs Pattern2[394]:c8
+10111100 
+11001000 
+
+14
+Difference at byte 395: Pattern1[395]:bc vs Pattern2[395]:c9
+10111100 
+11001001 
+
+15
+Difference at byte 396: Pattern1[396]:bc vs Pattern2[396]:ca
+10111100 
+11001010 
+
+16
+Difference at byte 397: Pattern1[397]:bc vs Pattern2[397]:cb
+10111100 
+11001011 
+
+
+
+
+To be determined.
+Only difference found is that the first 8 notes of bank 1 are on, the others off
+The note data above seems to indicate on/off at MSB which would seem redundant
+
+Difference at byte 413: Pattern1[413]:02 vs Pattern2[413]:00
+00000010 
+00000000 
+
+Difference at byte 429: Pattern1[429]:02 vs Pattern2[429]:00
+00000010 
+00000000 
+
+Difference at byte 445: Pattern1[445]:02 vs Pattern2[445]:00
+00000010 
+00000000
+ 
+Difference at byte 461: Pattern1[461]:02 vs Pattern2[461]:00
+00000010 
+00000000 
+
+Difference at byte 477: Pattern1[477]:02 vs Pattern2[477]:00
+00000010 
+00000000 
+
+Difference at byte 493: Pattern1[493]:02 vs Pattern2[493]:00
+00000010 
+00000000 
+
+Difference at byte 509: Pattern1[509]:02 vs Pattern2[509]:00
+00000010 
+00000000 
+
+Difference at byte 525: Pattern1[525]:02 vs Pattern2[525]:00
+00000010 
+00000000 
+

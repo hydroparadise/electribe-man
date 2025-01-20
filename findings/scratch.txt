@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s filename\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    const char *filename = argv[1];
+    FILE *file = fopen(filename, "rb");
+
+    if (!file) {
+        perror("Error opening file");
+        return EXIT_FAILURE;
+    }
+
+    // Allocate a buffer to read the first 512 bytes
+    unsigned char hbuff[512];
+
+    // Read the first 512 bytes from the file into the hbuff
+    size_t bytesRead = fread(hbuff, 1, sizeof(hbuff), file);
+
+    if (bytesRead != sizeof(hbuff)) {
+        perror("Error reading file");
+        fclose(file);
+        return EXIT_FAILURE;
+    }
+
+    // Print the first 8 bytes to the screen in ASCII format
+    for (size_t i = 0; i < 8; ++i) {
+        if (hbuff[i] >= 32 && hbuff[i] <= 126) { // Printable characters
+            putchar(hbuff[i]);
+        } else {
+            putchar('.'); // Non-printable character
+        }
+    }
+    putchar('\n');
+
+    // Allocate a buffer to read the next blocks of data
+    unsigned char pbuff[4806];
+
+    for (int p = 0; p < 256; ++p) {
+        // Read 4806 bytes from the file into the pbuff
+        bytesRead = fread(pbuff, 1, sizeof(pbuff), file);
+
+        if (bytesRead != sizeof(pbuff)) {
+            perror("Error reading file");
+            fclose(file);
+            return EXIT_FAILURE;
+        }
+
+        printf("%i) ",p);
+
+        // Print the first 8 bytes to the screen in ASCII format
+        for (size_t i = 0; i < 8 && i < bytesRead; ++i) {
+            if (pbuff[i] >= 32 && pbuff[i] <= 126) { // Printable characters
+                putchar(pbuff[i]);
+            } else {
+                putchar('.'); // Non-printable character
+            }
+        }
+        putchar('\n');
+    }
+
+    // Close the file
+    fclose(file);
+
+    return EXIT_SUCCESS;
+}
+
