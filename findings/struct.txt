@@ -1,7 +1,4 @@
 
-
-
-
     Patterns 4 banks (A,B,C,D) x 64 patterns per bank
         Tempo
         Swing
@@ -10,10 +7,8 @@
         Beat 1-4
         Arp Scale
 
-
         Drum Part 1-5,6-7
-            
-        
+
         Synth Part 1-5
             Synth 1-16
             OSC Edit 1 1-127

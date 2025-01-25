@@ -12,17 +12,6 @@
 #include "emx.h"
 #include "util.h"
 
-#define HELP 0
-#define READ_PATTERN_DATA 1
-#define COMPARE_PATTERN_DATA 2
-#define PRINT_PATTERN_DATA 3
-#define PRINT_PART_NOTES 4
-#define PRINT_PART_MOTIONS 5
-
-#define OPTION_COUNT 10
-unsigned char options[OPTION_COUNT];
-//NOTE: could be bitmap, but keeping array until all options are sorted out
-
 void print_help() {
     printf("Usage: emxread [options]\n");
     printf("\nOptions:\n");
@@ -34,9 +23,21 @@ void print_help() {
     printf("-c <bank1> <bank2>  Compare two patterns in the file (requires -f option to be used.)\n");
 };
 
-int read_emx(const char *filename, EmxFile *emx_file);
-void init_options();
+#define OPTION_COUNT 10
 
+#define HELP 0
+#define READ_PATTERN_DATA 1
+#define COMPARE_PATTERN_DATA 2
+#define PRINT_PATTERN_DATA 3
+#define PRINT_PART_NOTES 4
+#define PRINT_PART_MOTIONS 5
+
+unsigned char options[OPTION_COUNT];
+void init_options() {
+    for (int a = 0; a < OPTION_COUNT; a++) {
+        options[a] = FALSE;
+    }
+}
 
 /****
  * Arg tests:
@@ -127,42 +128,3 @@ int main(const int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-void init_options() {
-    for (int a = 0; a < OPTION_COUNT; a++) {
-        options[a] = FALSE;
-    }
-}
-
-int read_emx(const char *filename, EmxFile *emx_file) {
-
-    FILE *file = fopen(filename, "rb");
-
-    if (!file) {
-        perror("Error opening file");
-        return EXIT_FAILURE;
-    }
-
-
-    // Read the header (first 512 bytes)
-    size_t bytesRead = fread(emx_file->header, 1, HEADER_SIZE, file);
-    if (bytesRead != HEADER_SIZE) {
-        perror("Error reading header");
-        fclose(file);
-        return EXIT_FAILURE;
-    }
-
-    // Read patterns
-    for (int i = 0; i < PATTERN_COUNT; ++i) {
-
-        bytesRead = fread(emx_file->patterns[i], 1, PATTERN_DATA_SIZE, file);
-        if (bytesRead != PATTERN_DATA_SIZE) {
-            perror("Error reading pattern data");
-            fclose(file);
-            return EXIT_FAILURE;
-        }
-    }
-
-    // Close the file
-    fclose(file);
-    return EXIT_SUCCESS;
-}

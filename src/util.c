@@ -1,10 +1,9 @@
-// util.h
+// util.c
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
-#include "emx.h"
 
 void print_hex(const unsigned char *data, size_t len) {
     for (size_t i = 0; i < len; ++i) {
@@ -25,7 +24,7 @@ void print_binary(const unsigned char byte) {
 }
 
 /*
-expectned input: 0 - 255
+expected input: 0 - 255
 0 = A.01
 255 = D.64
 */
@@ -67,28 +66,4 @@ int bank_pattern_to_index(const char *pattern) {
     // Compute and return the final index
     return bank * 64 + index - 1; // Subtracting 1 because index starts from 0
 }
-
-void compare_emx_pattern_data(const unsigned char *pattern1, const unsigned char *pattern2, size_t len) {
-    for (size_t i = 0; i < len; ++i) {
-
-        if (pattern1[i] != pattern2[i]) {
-            printf("Difference at byte %zu: Pattern1[%03zu]:%02x vs Pattern2[%03zu]:%02x\n",
-                   i, i, pattern1[i], i, pattern2[i]);
-            print_binary(pattern1[i]); printf("\n");
-            print_binary(pattern2[i]); printf("\n");
-            printf("\n");
-        }
-    }
-}
-
-//TODO: refactor to EMX specific or make base struct to make function generic
-void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) {
-    int idx1 = bank_pattern_to_index(p1);
-    int idx2 = bank_pattern_to_index(p2);
-
-    printf("%s = %i, %s = %i \n", p1, idx1, p2, idx2);
-    compare_emx_pattern_data(emx->patterns[idx1], emx->patterns[idx2], PATTERN_DATA_SIZE);
-}
-
-
 
