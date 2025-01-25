@@ -5,9 +5,12 @@
 #include <string.h>
 #include <stddef.h>
 
-void print_hex(const unsigned char *data, size_t len) {
-    for (size_t i = 0; i < len; ++i) {
-        printf("%02x ", data[i]);
+
+void print_char(const char c) {
+    if (c >= 32) {
+        putchar(c);
+    } else {
+        printf(".");
     }
 }
 
@@ -38,8 +41,13 @@ void index_to_pattern_bank(char* result, int i) {
     }
 
     int index_in_bank = i % 64 + 1;
-    sprintf(result, "%c.%02d", bank, index_in_bank); // Format the string
+    snprintf(result, sizeof(result), "%c.%02d", bank, index_in_bank);
+}
 
+unsigned short read_big_endian_short(unsigned char byte1, unsigned char byte2) {
+    // Combine the two bytes into a big endian short
+    unsigned short result = (byte1 << 8) | byte2;
+    return result;
 }
 
 int bank_pattern_to_index(const char *pattern) {

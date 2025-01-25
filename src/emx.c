@@ -49,27 +49,40 @@ const char* pcm_synths[PCM_SYNTH_COUNT] = {
   "DR-BDs  ",  "DR-SDs  ",  "DR-CymTm"
 };
 
-void compare_emx_pattern_data(const unsigned char *pattern1, const unsigned char *pattern2, size_t len) {
-    for (size_t i = 0; i < len; ++i) {
-
-        if (pattern1[i] != pattern2[i]) {
-            printf("Difference at byte %zu: Pattern1[%03zu]:%02x vs Pattern2[%03zu]:%02x\n",
-                 i, i, pattern1[i], i, pattern2[i]);
-            print_binary(pattern1[i]); printf("\n");
-            print_binary(pattern2[i]); printf("\n");
-            printf("\n");
-        }
-    }
-}
 
 void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) {
     int idx1 = bank_pattern_to_index(p1);
     int idx2 = bank_pattern_to_index(p2);
 
     printf("%s = %i, %s = %i \n", p1, idx1, p2, idx2);
-    compare_emx_pattern_data(emx->patterns[idx1], emx->patterns[idx2], PATTERN_DATA_SIZE);
-}
 
+    for (size_t i = 0; i < EMX_PATTERN_DATA_SIZE; ++i) {
+
+        if (emx->patterns[idx1][i] != emx->patterns[idx2][i]) {
+            printf("\n");
+            printf("Byte offset: %4zu ", i); printf("\n");
+
+            int abs_pos1 = EMX_HEADER_SIZE + (EMX_PATTERN_DATA_SIZE * idx1 + i);
+            int abs_pos2 = EMX_HEADER_SIZE + (EMX_PATTERN_DATA_SIZE * idx2 + i);
+
+            printf("  P1 %06x: ", abs_pos1);
+            printf("%02X ", emx->patterns[idx1][i]);
+            print_binary(emx->patterns[idx1][i]);
+            printf("%*u ", 3, emx->patterns[idx1][i]);
+            printf("%*d ", 4, (char)emx->patterns[idx1][i]);
+            print_char(emx->patterns[idx1][i]);
+            printf("\n");
+
+            printf("  P2 %06x: ", abs_pos2);
+            printf("%02X ", emx->patterns[idx2][i]);
+            print_binary(emx->patterns[idx2][i]);
+            printf("%*u ", 3, emx->patterns[idx2][i]);
+            printf("%*i ", 4, (char)emx->patterns[idx2][i]);
+            print_char(emx->patterns[idx2][i]);
+            printf("\n");
+        }
+    }
+}
 
 
 int read_emx(const char *filename, EmxFile *emx_file) {
@@ -82,8 +95,8 @@ int read_emx(const char *filename, EmxFile *emx_file) {
     }
 
     // Read the header (first 512 bytes)
-    size_t bytesRead = fread(emx_file->header, 1, HEADER_SIZE, file);
-    if (bytesRead != HEADER_SIZE) {
+    size_t bytesRead = fread(emx_file->header, 1, EMX_HEADER_SIZE, file);
+    if (bytesRead != EMX_HEADER_SIZE) {
         perror("Error reading header");
         fclose(file);
         return EXIT_FAILURE;
@@ -92,8 +105,8 @@ int read_emx(const char *filename, EmxFile *emx_file) {
   // Read patterns
     for (int i = 0; i < PATTERN_COUNT; ++i) {
 
-        bytesRead = fread(emx_file->patterns[i], 1, PATTERN_DATA_SIZE, file);
-        if (bytesRead != PATTERN_DATA_SIZE) {
+        bytesRead = fread(emx_file->patterns[i], 1, EMX_PATTERN_DATA_SIZE, file);
+        if (bytesRead != EMX_PATTERN_DATA_SIZE) {
             perror("Error reading pattern data");
             fclose(file);
             return EXIT_FAILURE;
@@ -103,3 +116,56 @@ int read_emx(const char *filename, EmxFile *emx_file) {
     fclose(file);
     return EXIT_SUCCESS;
 }
+
+
+#define EMX_PATTERN_NAME_OFFSET 0
+#define EMX_PATTERN_NAME_LENGTH 8
+
+#define EMX_PATTERN_TEMPO_OFFSET 8
+#define EMX_PATTERN_TEMPO_SIZE 2
+
+#define EMX_PATTERN_SP1_NOTE_OFFSET 278
+#define EMX_PATTERN_SP2_NOTE_OFFSET 554
+#define EMX_PATTERN_SP3_NOTE_OFFSET 830
+#define EMX_PATTERN_SP4_NOTE_OFFSET 1106
+#define EMX_PATTERN_SP5_NOTE_OFFSET 1382
+
+void parse_emx_pattern(int index, const unsigned char *p) {
+    EmxPattern *pattern = (EmxPattern *)calloc(1, sizeof(EmxPattern));
+    if (!pattern) {
+        perror("Failed to allocate memory for pattern");
+        return;
+    }
+
+    char bank[5];
+    index_to_pattern_bank(bank, index);
+
+    printf("%s) ", bank);
+
+    // Pattern Name
+    memcpy(pattern->name, p + EMX_PATTERN_NAME_OFFSET, PATTERN_NAME_LENGTH);
+    pattern->name[PATTERN_NAME_LENGTH] = '\0'; // Null-terminate the string
+    printf("%s ", pattern->name);
+
+    unsigned short s_bpm = read_big_endian_short(
+        (unsigned char) p[EMX_PATTERN_NAME_OFFSET],
+        (unsigned char) p[EMX_PATTERN_NAME_OFFSET + EMX_PATTERN_NAME_LENGTH -1]
+    );
+    printf("%i\n",s_bpm);
+
+    printf("%i\n", s_bpm >> 4);
+    printf("%i\n", 0x0F & s_bpm );
+
+
+
+    printf("\n");
+    free(pattern); // Free allocated memory
+}
+
+void parse_emx_file(EmxFile *emx) {
+    for (int i = 0; i < PATTERN_COUNT; ++i) {
+        parse_emx_pattern(i,emx->patterns[i]);
+    }
+}
+
+

@@ -78,7 +78,7 @@ int main(const int argc, char *argv[]) {
                 options[COMPARE_PATTERN_DATA] = TRUE;
                 p1 = argv[++a];
                 p2 = argv[++a];
-                printf("p1: %s, p2: %s\n", p1, p2);
+                //printf("p1: %s, p2: %s\n", p1, p2);
             }
         }
 
@@ -90,12 +90,13 @@ int main(const int argc, char *argv[]) {
                         if (options[READ_PATTERN_DATA]) {
                             printf("Reading file %s\n", filename);
                             read_emx(filename, &emx_file);
+                            parse_emx_file(&emx_file);
                             options[READ_PATTERN_DATA] = FALSE;
                         }
                         break;
                     case COMPARE_PATTERN_DATA:
                         if (options[COMPARE_PATTERN_DATA] && p1 != NULL && p2 != NULL) {
-                            printf("Comparing patterns %s %s from file %s\n", p1, p2, filename);
+                            printf("\nComparing patterns %s %s from file %s\n", p1, p2, filename);
                             compare_emx_bank_pattern_data(p1, p2, &emx_file);
                             p1 = NULL; p2 = NULL;
                             options[COMPARE_PATTERN_DATA] = FALSE;
