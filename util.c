@@ -68,7 +68,7 @@ int bank_pattern_to_index(const char *pattern) {
     return bank * 64 + index - 1; // Subtracting 1 because index starts from 0
 }
 
-void compare_pattern_data(const unsigned char *pattern1, const unsigned char *pattern2, size_t len) {
+void compare_emx_pattern_data(const unsigned char *pattern1, const unsigned char *pattern2, size_t len) {
     for (size_t i = 0; i < len; ++i) {
 
         if (pattern1[i] != pattern2[i]) {
@@ -82,12 +82,12 @@ void compare_pattern_data(const unsigned char *pattern1, const unsigned char *pa
 }
 
 //TODO: refactor to EMX specific or make base struct to make function generic
-void compare_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) {
+void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) {
     int idx1 = bank_pattern_to_index(p1);
     int idx2 = bank_pattern_to_index(p2);
 
     printf("%s = %i, %s = %i \n", p1, idx1, p2, idx2);
-    compare_pattern_data(emx->patterns[idx1], emx->patterns[idx2], PATTERN_DATA_SIZE);
+    compare_emx_pattern_data(emx->patterns[idx1], emx->patterns[idx2], PATTERN_DATA_SIZE);
 }
 
 

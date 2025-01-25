@@ -16,6 +16,8 @@
 #define READ_PATTERN_DATA 1
 #define COMPARE_PATTERN_DATA 2
 #define PRINT_PATTERN_DATA 3
+#define PRINT_PART_NOTES 4
+#define PRINT_PART_MOTIONS 5
 
 #define OPTION_COUNT 10
 unsigned char options[OPTION_COUNT];
@@ -27,6 +29,8 @@ void print_help() {
     printf("-h         Display this help message.\n");
     printf("-f <file>  Read pattern data from the specified file.\n");
     printf("-p         Print all patterns from the file (if read).\n");
+    printf("-n         Print part notes.\n");
+    printf("-m         Print part motion values.\n");
     printf("-c <bank1> <bank2>  Compare two patterns in the file (requires -f option to be used.)\n");
 };
 
@@ -75,7 +79,6 @@ int main(const int argc, char *argv[]) {
                 p2 = argv[++a];
                 printf("p1: %s, p2: %s\n", p1, p2);
             }
-
         }
 
         if (filename != NULL) {
@@ -92,7 +95,7 @@ int main(const int argc, char *argv[]) {
                     case COMPARE_PATTERN_DATA:
                         if (options[COMPARE_PATTERN_DATA] && p1 != NULL && p2 != NULL) {
                             printf("Comparing patterns %s %s from file %s\n", p1, p2, filename);
-                            compare_bank_pattern_data(p1, p2, &emx_file);
+                            compare_emx_bank_pattern_data(p1, p2, &emx_file);
                             p1 = NULL; p2 = NULL;
                             options[COMPARE_PATTERN_DATA] = FALSE;
                         }
@@ -103,7 +106,7 @@ int main(const int argc, char *argv[]) {
                             //print patterns function <- TODO: implement
                             options[PRINT_PATTERN_DATA] = FALSE;
                         }
-                    break;
+                        break;
                     default: break;;
                 }
             }
@@ -150,6 +153,7 @@ int read_emx(const char *filename, EmxFile *emx_file) {
 
     // Read patterns
     for (int i = 0; i < PATTERN_COUNT; ++i) {
+
         bytesRead = fread(emx_file->patterns[i], 1, PATTERN_DATA_SIZE, file);
         if (bytesRead != PATTERN_DATA_SIZE) {
             perror("Error reading pattern data");

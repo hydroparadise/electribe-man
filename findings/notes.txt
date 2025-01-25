@@ -79,3 +79,5 @@ final
 compare 2 patterns and flag differences a single byte level
     compare patterns for index 244 and 255
  
+
+
