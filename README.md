@@ -10,3 +10,7 @@ TEST.EMX & TSER.EMX used as test files which are mostly default patterns from fa
 TSER.EMX - Patters for analysis
    <p/>D.33 Init - Completely empty
    <p/>D.* - Patterns that contain changes to compare with D.33
+
+</p> example usage
+
+emxread -f ../TSER.EMX -p -c D.33 D.37
