@@ -2,7 +2,7 @@ Electibe Manager: electriber_man
   Reads and extracts pattern data from Electribe backup files
 
 Planning to support the following:
-   <p/>Electribe EMX-1: Started, currently can read patter names
+   <p/>Electribe EMX-1: Started, currently can read pattern names and pattern content
    <p/>Electribe ESX-1: Plan to support but not started
 
 TEST.EMX & TSER.EMX used as test files which are mostly default patterns from factory.
