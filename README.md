@@ -1,4 +1,4 @@
-Electibe Manager: electriber_man
+Electibe Manager: electribe-man
   Reads and extracts pattern data from Electribe backup files
 
 Planning to support the following:
