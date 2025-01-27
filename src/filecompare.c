@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//assumed be static but TBD
 #define BUFFER_SIZE 1736704
 
 void print_hex(const unsigned char *data, size_t len) {

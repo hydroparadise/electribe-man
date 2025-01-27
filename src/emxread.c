@@ -50,7 +50,7 @@ int main(const int argc, char *argv[]) {
     EmxFile emx_file;
 
     //option values place holders
-    const char *filename = NULL;
+    const char *path = NULL;
     char *p1 = NULL;
     char *p2 = NULL;
 
@@ -64,8 +64,8 @@ int main(const int argc, char *argv[]) {
         }
         if (!strcmp(argv[a], "-f")) {
             if (a < argc - 1 && argv[a + 1][0] != '-') {
-                filename = argv[++a];
-                printf("filename: %s\n", filename);
+                path = argv[++a];
+                printf("path: %s\n", path);
                 options[READ_PATTERN_DATA] = TRUE;
             }
         }
@@ -82,21 +82,21 @@ int main(const int argc, char *argv[]) {
             }
         }
 
-        if (filename != NULL) {
+        if (path != NULL) {
             for (int o = 0; o < OPTION_COUNT; o++) {
                 //printf("Run Argument %i: %s -> %i\n", a, argv[a], options[o]);
                 switch (o) {
                     case READ_PATTERN_DATA:
                         if (options[READ_PATTERN_DATA]) {
-                            printf("Reading file %s\n", filename);
-                            read_emx(filename, &emx_file);
-                            parse_emx_file(&emx_file);
+                            printf("Reading file %s\n", path);
+                            read_emx(path, &emx_file);
+                            parse_emx_file(path, &emx_file);
                             options[READ_PATTERN_DATA] = FALSE;
                         }
                         break;
                     case COMPARE_PATTERN_DATA:
                         if (options[COMPARE_PATTERN_DATA] && p1 != NULL && p2 != NULL) {
-                            printf("\nComparing patterns %s %s from file %s\n", p1, p2, filename);
+                            printf("\nComparing patterns %s %s from file %s\n", p1, p2, path);
                             compare_emx_bank_pattern_data(p1, p2, &emx_file);
                             p1 = NULL; p2 = NULL;
                             options[COMPARE_PATTERN_DATA] = FALSE;
@@ -115,7 +115,7 @@ int main(const int argc, char *argv[]) {
         }
     }
 
-    if (filename == NULL) {
+    if (path == NULL) {
         printf("File not specified\n");
         print_help();
         return EXIT_FAILURE;

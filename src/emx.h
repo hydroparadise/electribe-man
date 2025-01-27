@@ -2,8 +2,10 @@
 
 #pragma once
 
+#define EMX_FILENAME_MAX 12  //assuming MS-DOS format (FAT16?)
 #define PATTERN_COUNT 256
 #define PATTERN_NAME_LENGTH 8
+#define PATTERN_BANK_LENGTH 4
 #define EMX_HEADER_SIZE 512
 #define EMX_PATTERN_DATA_SIZE 4806
 #define NOTE_BANK_COUNT 8
@@ -26,10 +28,11 @@ typedef struct EmxSynthPart {
 } EmxSynthPart;
 
 typedef struct EmxPattern {
-    const char *filename;
+    char filename[EMX_FILENAME_MAX + 1 ];
+    char bank[PATTERN_BANK_LENGTH + 1];
     char name[PATTERN_NAME_LENGTH + 1];
     short length;
-    short tempo;
+    unsigned short tempo;
     EmxSynthPart synth_parts[5];
 
 } EmxPattern;
@@ -42,5 +45,7 @@ typedef struct EmxFile {
 
 int read_emx(const char *filename, EmxFile *emx_file);
 void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) ;
-void parse_emx_pattern(int index, const unsigned char *p1);
-void parse_emx_file(EmxFile *emx);
+EmxDrumPart* parse_emx_drum_part(const unsigned char *p);
+EmxDrumPart* parse_emx_synth_part(const unsigned char *p);
+EmxPattern* parse_emx_pattern(const char  *path, int index, const unsigned char *p);
+void parse_emx_file(const char  *path, EmxFile *emx);

@@ -7,7 +7,7 @@
 #include "util.h"
 #include "emx.h"
 
-const char* pcm_perc[PCM_DRUM_COUNT] = {
+const char* pcm_drum[PCM_DRUM_COUNT] = {
   "BD-Dark ",  "BD-99 1 ",  "BD-99 2 ",  "BD-Syn1 ",  "BD-Syn2 ",  "BD-Syn3 ",  "BD-Syn4 ",  "BD-Syn5 ",
   "BD-Syn6 ",  "BD-Syn7 ",  "BD-Syn8 ",  "BD-Syn9 ",  "BD-Syn10",  "BD-Dist1",  "BD-Dist2",  "BD-Dist3",
   "BD-Dist4",  "BD-Dist5",  "BD-Dist6",  "BD-Dist7",  "BD-Squas",  "BD-88 1 ",  "BD-88 2 ",  "BD-Digi ",
@@ -51,8 +51,8 @@ const char* pcm_synths[PCM_SYNTH_COUNT] = {
 
 
 void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) {
-    int idx1 = bank_pattern_to_index(p1);
-    int idx2 = bank_pattern_to_index(p2);
+    int idx1 = pattern_bank_to_index(p1);
+    int idx2 = pattern_bank_to_index(p2);
 
     printf("%s = %i, %s = %i \n", p1, idx1, p2, idx2);
 
@@ -102,6 +102,7 @@ int read_emx(const char *filename, EmxFile *emx_file) {
         return EXIT_FAILURE;
     }
 
+
   // Read patterns
     for (int i = 0; i < PATTERN_COUNT; ++i) {
 
@@ -119,52 +120,91 @@ int read_emx(const char *filename, EmxFile *emx_file) {
 
 
 #define EMX_PATTERN_NAME_OFFSET 0
+
 #define EMX_PATTERN_NAME_LENGTH 8
 
 #define EMX_PATTERN_TEMPO_OFFSET 8
-#define EMX_PATTERN_TEMPO_SIZE 2
+//#define EMX_PATTERN_TEMPO_SIZE 2
+#define EMX_PATTERN_TEMPO_SHIFT 7
+#define EMX_PATTERN_TEMPO_MASK 0x0F
 
+#define EMX_PATTERN_LENGTH_OFFSET 11
+#define EMX_PATTERN_LENGTH_MASK 0x0F
+
+
+//Synth Parts
 #define EMX_PATTERN_SP1_NOTE_OFFSET 278
 #define EMX_PATTERN_SP2_NOTE_OFFSET 554
 #define EMX_PATTERN_SP3_NOTE_OFFSET 830
 #define EMX_PATTERN_SP4_NOTE_OFFSET 1106
 #define EMX_PATTERN_SP5_NOTE_OFFSET 1382
 
-void parse_emx_pattern(int index, const unsigned char *p) {
+//Drum Parts
+#define EMX_PATTERN_DP1_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP2_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP3_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP4_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP5_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP6A_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP6B_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP7A_TRIGGER_OFFSET 0
+#define EMX_PATTERN_DP7B_TRIGGER_OFFSET 0
+
+EmxDrumPart* parse_emx_drum_part(const unsigned char *p) {
+    return NULL;
+}
+
+EmxDrumPart* parse_emx_synth_part(const unsigned char *p) {
+    return NULL;
+}
+
+EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *p) {
+
     EmxPattern *pattern = (EmxPattern *)calloc(1, sizeof(EmxPattern));
+
     if (!pattern) {
         perror("Failed to allocate memory for pattern");
-        return;
+        return NULL;
     }
 
-    char bank[5];
-    index_to_pattern_bank(bank, index);
+    // File name
+    snprintf(pattern->filename, sizeof(pattern->filename), "%s", get_filename(path));
+    printf("%*s ",EMX_FILENAME_MAX , pattern->filename);
 
-    printf("%s) ", bank);
+    // Pattern Bank
+    index_to_pattern_bank(pattern->bank, index);
+    printf("%s ", pattern->bank);
 
     // Pattern Name
     memcpy(pattern->name, p + EMX_PATTERN_NAME_OFFSET, PATTERN_NAME_LENGTH);
     pattern->name[PATTERN_NAME_LENGTH] = '\0'; // Null-terminate the string
     printf("%s ", pattern->name);
 
-    unsigned short s_bpm = read_big_endian_short(
-        (unsigned char) p[EMX_PATTERN_NAME_OFFSET],
-        (unsigned char) p[EMX_PATTERN_NAME_OFFSET + EMX_PATTERN_NAME_LENGTH -1]
+    // Pattern Tempo/BPM
+    pattern->tempo = read_big_endian_short(
+        (unsigned char) p[EMX_PATTERN_TEMPO_OFFSET],
+        (unsigned char) p[EMX_PATTERN_TEMPO_OFFSET + 1]
     );
-    printf("%i\n",s_bpm);
+    printf("%03i.%i ",
+           pattern->tempo >> EMX_PATTERN_TEMPO_SHIFT,
+           pattern->tempo & EMX_PATTERN_TEMPO_MASK
+    );
 
-    printf("%i\n", s_bpm >> 4);
-    printf("%i\n", 0x0F & s_bpm );
-
-
+    // Pattern Length
+    pattern->length = (p[EMX_PATTERN_LENGTH_OFFSET] & EMX_PATTERN_LENGTH_MASK) + 1;
+    printf("%i ", pattern->length);
 
     printf("\n");
-    free(pattern); // Free allocated memory
+
+    //free(pattern); // Free allocated memory
+    return pattern;
 }
 
-void parse_emx_file(EmxFile *emx) {
+void parse_emx_file(const char *path, EmxFile *emx) {
+    printf("FileName     Bank Name     BPM   Len\n");
     for (int i = 0; i < PATTERN_COUNT; ++i) {
-        parse_emx_pattern(i,emx->patterns[i]);
+        EmxPattern *pattern = parse_emx_pattern(path,i,emx->patterns[i]);
+        free (pattern);
     }
 }
 

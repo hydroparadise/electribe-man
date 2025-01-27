@@ -2,7 +2,7 @@
 
 rm bin -rf
 mkdir bin
-gcc -o ./bin/emxread emxread.c util.c
+gcc -o ./bin/emxread ./src/emxread.c ./src/util.c ./src/emx.c
 
 
 

@@ -5,6 +5,17 @@
 #include <string.h>
 #include <stddef.h>
 
+char* get_filename(const char* path) {
+    const char* slash_pos = strrchr(path, '/');
+    if (slash_pos == NULL) {
+        slash_pos = strrchr(path, '\\');
+    }
+    if (slash_pos != NULL) {
+        return strdup(slash_pos + 1);
+    } else {
+        return strdup(path);
+    }
+}
 
 void print_char(const char c) {
     if (c >= 32) {
@@ -26,6 +37,12 @@ void print_binary(const unsigned char byte) {
     putchar(' ');
 }
 
+unsigned short read_big_endian_short(unsigned char byte1, unsigned char byte2) {
+    // Combine the two bytes into a big endian short
+    unsigned short result = (byte1 << 8) | byte2;
+    return result;
+}
+
 /*
 expected input: 0 - 255
 0 = A.01
@@ -44,13 +61,7 @@ void index_to_pattern_bank(char* result, int i) {
     snprintf(result, sizeof(result), "%c.%02d", bank, index_in_bank);
 }
 
-unsigned short read_big_endian_short(unsigned char byte1, unsigned char byte2) {
-    // Combine the two bytes into a big endian short
-    unsigned short result = (byte1 << 8) | byte2;
-    return result;
-}
-
-int bank_pattern_to_index(const char *pattern) {
+int pattern_bank_to_index(const char *pattern) {
     // Ensure pattern is not NULL
     if (pattern == NULL || strlen(pattern) != 4) {
         return -1; // Return an error code for invalid input
