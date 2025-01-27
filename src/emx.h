@@ -28,7 +28,7 @@ typedef struct EmxSynthPart {
 } EmxSynthPart;
 
 typedef struct EmxPattern {
-    char filename[EMX_FILENAME_MAX + 1 ];
+    char filename[EMX_FILENAME_MAX + 1];
     char bank[PATTERN_BANK_LENGTH + 1];
     char name[PATTERN_NAME_LENGTH + 1];
     short length;
