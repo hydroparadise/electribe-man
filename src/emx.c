@@ -7,46 +7,46 @@
 #include "util.h"
 #include "emx.h"
 
-const char* pcm_drum[PCM_DRUM_COUNT] = {
-  "BD-Dark ",  "BD-99 1 ",  "BD-99 2 ",  "BD-Syn1 ",  "BD-Syn2 ",  "BD-Syn3 ",  "BD-Syn4 ",  "BD-Syn5 ",
-  "BD-Syn6 ",  "BD-Syn7 ",  "BD-Syn8 ",  "BD-Syn9 ",  "BD-Syn10",  "BD-Dist1",  "BD-Dist2",  "BD-Dist3",
-  "BD-Dist4",  "BD-Dist5",  "BD-Dist6",  "BD-Dist7",  "BD-Squas",  "BD-88 1 ",  "BD-88 2 ",  "BD-Digi ",
-  "BD-DDD1 ",  "BD-DDD2 ",  "BD-Lynn ",  "BD-Dry1 ",  "BD-Dry2 ",  "BD-Dry3 ",  "BD-Dry4 ",  "BD-Soft ",
-  "BD-Hip  ",  "BD-R&B  ",  "BD-Jazz ",  "BD-Break",  "BD-Ambi ",  "BD-Def  ",  "BD-D&B1 ",  "BD-D&B2 ",
-  "BigBreak",  "SD-99 1 ",  "SD-99 2 ",  "SD-99 3 ",  "SD-99 4 ",  "SD-99 5 ",  "SD-88 1 ",  "SD-88 2 ",
-  "SD-88 3 ",  "SD-Syn1 ",  "SD-Syn2 ",  "SD-77   ",  "SD-Lynn ",  "SD-Disco",  "SD-Dry1 ",  "SD-Dry2 ",
-  "SD-Dry3 ",  "SD-Dry4 ",  "SD-Dry5 ",  "SD-Dry6 ",  "SD-Ambi1",  "SD-Ambi2",  "SD-Ambi3",  "SD-Picl1",
-  "SD-Picl2",  "SD-Picl3",  "SD-Bras1",  "SD-Bras2",  "SD-Crckl",  "SD-Brk1 ",  "SD-Brk2 ",  "SD-Brk3 ",
-  "SD-Brk4 ",  "SD-D&B  ",  "SD-Clap1",  "SD-Clap2",  "SD-R&B1 ",  "SD-R&B2 ",  "SD-R&B3 ",  "SD-R&B4 ",
-  "SD-R&B5 ",  "RM-Ambi1",  "RM-Ambi2",  "RM-Dry  ",  "RM-DDD  ",  "RM-Lynn ",  "RM-88   ",  "Clp-99 1",
-  "Clp-99 2",  "Clp-88 1",  "Clp-88 2",  "Clp-Nois",  "Clp-R&B1",  "Clp-R&B2",  "HH-99 1C",  "HH-99 1O",
-  "HH-99 2C",  "HH-99 2H",  "HH-99 2O",  "HH-99 3C",  "HH-99 3O",  "HH-88 C ",  "HH-88 O ",  "HH-Syn1C",
-  "HH-Syn1H",  "HH-Syn1O",  "HH-Syn2C",  "HH-Syn2O",  "HH-Syn3C",  "HH-Syn3O",  "HH-Nrm1C",  "HH-Nrm1O",
-  "HH-Nrm2C",  "HH-Nrm2O",  "HH-CrspC",  "HH-CrspO",  "HH-OldC ",  "HH-OldO ",  "HH-LynnC",  "HH-LynnO",
-  "Rid-99 1",  "Rid-99 2",  "Rid-KPR ",  "Rid-Edg1",  "Rid-Edg2",  "Rid-Jazz",  "Crs-99 1",  "Crs-99 2",
-  "Crs-Norm",  "Crs-Spls",  "Tom-99  ",  "Tom-88  ",  "Tom-Simm",  "Tom-NrmH",  "Tom-NrmL",  "Tom-NrmF",
-  "Tom-Jazz",  "Bng-Hi  ",  "Bng-Slap",  "Bng-Lo1 ",  "Bng-Lo2 ",  "Cng-Hi1 ",  "Cng-Hi2 ",  "Cng-HiMt",
-  "Cng-Lo1 ",  "Cng-Lo2 ",  "Cng-LoMt",  "Cng-LynH",  "Cng-LynL",  "Timb-Hi1",  "Timb-Hi2",  "Timb-Lo1",
-  "Timb-Lo2",  "Timb-Rim",  "Claves  ",  "Cowbell ",  "ChaChaBl",  "MamboBel",  "Agogo   ",  "Triangle",
-  "Tambouri",  "Junk1   ",  "Junk2   ",  "SleighBl",  "Shaker1 ",  "Shaker2 ",  "Cabasa1 ",  "Cabasa2 ",
-  "Cabasa3 ",  "Guiro-S ",  "Guiro-L ",  "Wbl-DDDH",  "Wbl-DDDL",  "Whistle ",  "Baya-Ghe",  "Baya-Mt1",
-  "Baya-Mt2",  "Tbla-Na ",  "Tbla-Tin",  "Tbla-Mt1",  "Tbla-Mt2",  "Djmb-1a ",  "Djmb-1b ",  "Djmb-1c ",
-  "Djmb-2a ",  "Djmb-2b ",  "Djmb-2c ",  "Udu     ",  "Taiko-Op",  "Taiko-Rm",  "Tsuzumi ",  "GtrWah  ",
-  "Zap1    ",  "Zap2    ",  "SynPerc1",  "SynPerc2",  "SynPerc3",  "SynPerc4",  "SynPerc5",  "SynPerc6",
-  "Rev-BD  ",  "Rev-SD1 ",  "Rev-SD2 ",  "Rev-Crsh",  "Scratch1",  "Scratch2"
+const char pcm_drum[PCM_DRUM_COUNT][PCM_NAME_LENGTH + 1] = {
+  "BD-Dark \0",  "BD-99 1 \0",  "BD-99 2 \0",  "BD-Syn1 \0",  "BD-Syn2 \0",  "BD-Syn3 \0",  "BD-Syn4 \0",  "BD-Syn5 \0",
+  "BD-Syn6 \0",  "BD-Syn7 \0",  "BD-Syn8 \0",  "BD-Syn9 \0",  "BD-Syn10\0",  "BD-Dist1\0",  "BD-Dist2\0",  "BD-Dist3\0",
+  "BD-Dist4\0",  "BD-Dist5\0",  "BD-Dist6\0",  "BD-Dist7\0",  "BD-Squas\0",  "BD-88 1 \0",  "BD-88 2 \0",  "BD-Digi \0",
+  "BD-DDD1 \0",  "BD-DDD2 \0",  "BD-Lynn \0",  "BD-Dry1 \0",  "BD-Dry2 \0",  "BD-Dry3 \0",  "BD-Dry4 \0",  "BD-Soft \0",
+  "BD-Hip  \0",  "BD-R&B  \0",  "BD-Jazz \0",  "BD-Break\0",  "BD-Ambi \0",  "BD-Def  \0",  "BD-D&B1 \0",  "BD-D&B2 \0",
+  "BigBreak\0",  "SD-99 1 \0",  "SD-99 2 \0",  "SD-99 3 \0",  "SD-99 4 \0",  "SD-99 5 \0",  "SD-88 1 \0",  "SD-88 2 \0",
+  "SD-88 3 \0",  "SD-Syn1 \0",  "SD-Syn2 \0",  "SD-77   \0",  "SD-Lynn \0",  "SD-Disco\0",  "SD-Dry1 \0",  "SD-Dry2 \0",
+  "SD-Dry3 \0",  "SD-Dry4 \0",  "SD-Dry5 \0",  "SD-Dry6 \0",  "SD-Ambi1\0",  "SD-Ambi2\0",  "SD-Ambi3\0",  "SD-Picl1\0",
+  "SD-Picl2\0",  "SD-Picl3\0",  "SD-Bras1\0",  "SD-Bras2\0",  "SD-Crckl\0",  "SD-Brk1 \0",  "SD-Brk2 \0",  "SD-Brk3 \0",
+  "SD-Brk4 \0",  "SD-D&B  \0",  "SD-Clap1\0",  "SD-Clap2\0",  "SD-R&B1 \0",  "SD-R&B2 \0",  "SD-R&B3 \0",  "SD-R&B4 \0",
+  "SD-R&B5 \0",  "RM-Ambi1\0",  "RM-Ambi2\0",  "RM-Dry  \0",  "RM-DDD  \0",  "RM-Lynn \0",  "RM-88   \0",  "Clp-99 1\0",
+  "Clp-99 2\0",  "Clp-88 1\0",  "Clp-88 2\0",  "Clp-Nois\0",  "Clp-R&B1\0",  "Clp-R&B2\0",  "HH-99 1C\0",  "HH-99 1O\0",
+  "HH-99 2C\0",  "HH-99 2H\0",  "HH-99 2O\0",  "HH-99 3C\0",  "HH-99 3O\0",  "HH-88 C \0",  "HH-88 O \0",  "HH-Syn1C\0",
+  "HH-Syn1H\0",  "HH-Syn1O\0",  "HH-Syn2C\0",  "HH-Syn2O\0",  "HH-Syn3C\0",  "HH-Syn3O\0",  "HH-Nrm1C\0",  "HH-Nrm1O\0",
+  "HH-Nrm2C\0",  "HH-Nrm2O\0",  "HH-CrspC\0",  "HH-CrspO\0",  "HH-OldC \0",  "HH-OldO \0",  "HH-LynnC\0",  "HH-LynnO\0",
+  "Rid-99 1\0",  "Rid-99 2\0",  "Rid-KPR \0",  "Rid-Edg1\0",  "Rid-Edg2\0",  "Rid-Jazz\0",  "Crs-99 1\0",  "Crs-99 2\0",
+  "Crs-Norm\0",  "Crs-Spls\0",  "Tom-99  \0",  "Tom-88  \0",  "Tom-Simm\0",  "Tom-NrmH\0",  "Tom-NrmL\0",  "Tom-NrmF\0",
+  "Tom-Jazz\0",  "Bng-Hi  \0",  "Bng-Slap\0",  "Bng-Lo1 \0",  "Bng-Lo2 \0",  "Cng-Hi1 \0",  "Cng-Hi2 \0",  "Cng-HiMt\0",
+  "Cng-Lo1 \0",  "Cng-Lo2 \0",  "Cng-LoMt\0",  "Cng-LynH\0",  "Cng-LynL\0",  "Timb-Hi1\0",  "Timb-Hi2\0",  "Timb-Lo1\0",
+  "Timb-Lo2\0",  "Timb-Rim\0",  "Claves  \0",  "Cowbell \0",  "ChaChaBl\0",  "MamboBel\0",  "Agogo   \0",  "Triangle\0",
+  "Tambouri\0",  "Junk1   \0",  "Junk2   \0",  "SleighBl\0",  "Shaker1 \0",  "Shaker2 \0",  "Cabasa1 \0",  "Cabasa2 \0",
+  "Cabasa3 \0",  "Guiro-S \0",  "Guiro-L \0",  "Wbl-DDDH\0",  "Wbl-DDDL\0",  "Whistle \0",  "Baya-Ghe\0",  "Baya-Mt1\0",
+  "Baya-Mt2\0",  "Tbla-Na \0",  "Tbla-Tin\0",  "Tbla-Mt1\0",  "Tbla-Mt2\0",  "Djmb-1a \0",  "Djmb-1b \0",  "Djmb-1c \0",
+  "Djmb-2a \0",  "Djmb-2b \0",  "Djmb-2c \0",  "Udu     \0",  "Taiko-Op\0",  "Taiko-Rm\0",  "Tsuzumi \0",  "GtrWah  \0",
+  "Zap1    \0",  "Zap2    \0",  "SynPerc1\0",  "SynPerc2\0",  "SynPerc3\0",  "SynPerc4\0",  "SynPerc5\0",  "SynPerc6\0",
+  "Rev-BD  \0",  "Rev-SD1 \0",  "Rev-SD2 \0",  "Rev-Crsh\0",  "Scratch1\0",  "Scratch2"
 };
 
 const char* pcm_synths[PCM_SYNTH_COUNT] = {
-  "Piano   ",  "E.Piano ",  "Clav    ",  "M1-Organ",  "Organ   ",  "Marimba ",  "Vibe    ",  "Cymbell ",
-  "Flute   ",  "AltoSax ",  "M1-T.Sax",  "Trumpet ",  "MuteTp  ",  "BrassEns",  "VoiceAh ",  "M1-Choir",
-  "VoiceWav",  "Violin  ",  "Strings ",  "Pizzicat",  "F.Guitar",  "A.Guitar",  "MuteGtr ",  "FunkGtr ",
-  "Sitar   ",  "A.Bass  ",  "E.Bass  ",  "M1-Bass ",  "PickBass",  "SlapBass",  "FMBass  ",  "88Bass  ",
-  "BoostSaw",  "SawSqMix",  "HPFSaw  ",  "OctBass1",  "OctBass2",  "Saw5th  ",  "Squ5th  ",  "SynSin1 ",
-  "SynSin2 ",  "SynSin3 ",  "SynSin4 ",  "SynSin5 ",  "SynWire1",  "SynWire2",  "Digi1   ",  "Digi2   ",
-  "Digi3   ",  "Digi4   ",  "SynVox1 ",  "SynVox2 ",  "Endless ",  "Syn-FX1 ",  "Syn-FX2 ",  "OrchHit ",
-  "BandHit1",  "BandHit2",  "DiscoHit",  "RaveHit1",  "RaveHit2",  "RaveHit3",  "RaveHit4",  "RaveHit5",
-  "RaveHit6",  "CH-Piano",  "CH-M1Pia",  "CH-EPian",  "CH-Organ",  "CH-Strgs",  "CH-Gtr1 ",  "CH-Gtr2 ",
-  "DR-BDs  ",  "DR-SDs  ",  "DR-CymTm"
+  "Piano   \0",  "E.Piano \0",  "Clav    \0",  "M1-Organ\0",  "Organ   \0",  "Marimba \0",  "Vibe    \0",  "Cymbell \0",
+  "Flute   \0",  "AltoSax \0",  "M1-T.Sax\0",  "Trumpet \0",  "MuteTp  \0",  "BrassEns\0",  "VoiceAh \0",  "M1-Choir\0",
+  "VoiceWav\0",  "Violin  \0",  "Strings \0",  "Pizzicat\0",  "F.Guitar\0",  "A.Guitar\0",  "MuteGtr \0",  "FunkGtr \0",
+  "Sitar   \0",  "A.Bass  \0",  "E.Bass  \0",  "M1-Bass \0",  "PickBass\0",  "SlapBass\0",  "FMBass  \0",  "88Bass  \0",
+  "BoostSaw\0",  "SawSqMix\0",  "HPFSaw  \0",  "OctBass1\0",  "OctBass2\0",  "Saw5th  \0",  "Squ5th  \0",  "SynSin1 \0",
+  "SynSin2 \0",  "SynSin3 \0",  "SynSin4 \0",  "SynSin5 \0",  "SynWire1\0",  "SynWire2\0",  "Digi1   \0",  "Digi2   \0",
+  "Digi3   \0",  "Digi4   \0",  "SynVox1 \0",  "SynVox2 \0",  "Endless \0",  "Syn-FX1 \0",  "Syn-FX2 \0",  "OrchHit \0",
+  "BandHit1\0",  "BandHit2\0",  "DiscoHit\0",  "RaveHit1\0",  "RaveHit2\0",  "RaveHit3\0",  "RaveHit4\0",  "RaveHit5\0",
+  "RaveHit6\0",  "CH-Piano\0",  "CH-M1Pia\0",  "CH-EPian\0",  "CH-Organ\0",  "CH-Strgs\0",  "CH-Gtr1 \0",  "CH-Gtr2 \0",
+  "DR-BDs  \0",  "DR-SDs  \0",  "DR-CymTm"
 };
 
 
@@ -120,7 +120,6 @@ int read_emx(const char *filename, EmxFile *emx_file) {
 
 
 #define EMX_PATTERN_NAME_OFFSET 0
-
 #define EMX_PATTERN_NAME_LENGTH 8
 
 #define EMX_PATTERN_TEMPO_OFFSET 8
@@ -154,7 +153,7 @@ int read_emx(const char *filename, EmxFile *emx_file) {
 #define EMX_PATTERN_DP6B_TRIGGER_OFFSET 190
 #define EMX_PATTERN_DP7A_TRIGGER_OFFSET 216
 #define EMX_PATTERN_DP7B_TRIGGER_OFFSET 242
-#define EMX_PATTERN_DP7C_TRIGGER_SIZE 16
+#define EMX_PATTERN_TRIGGER_SIZE 16
 
 // Synth Parts
 #define EMX_PATTERN_SP1_NOTE_OFFSET 278
@@ -164,12 +163,48 @@ int read_emx(const char *filename, EmxFile *emx_file) {
 #define EMX_PATTERN_SP5_NOTE_OFFSET 1382
 
 
+size_t emx_drum_pcm_offsets[EMX_DRUM_PART_COUNT] = {
+	EMX_PATTERN_DP1_PCM_OFFSET,
+	EMX_PATTERN_DP2_PCM_OFFSET,
+	EMX_PATTERN_DP3_PCM_OFFSET,
+	EMX_PATTERN_DP4_PCM_OFFSET,
+	EMX_PATTERN_DP5_PCM_OFFSET,
+	EMX_PATTERN_DP6A_PCM_OFFSET,
+	EMX_PATTERN_DP6B_PCM_OFFSET,
+	EMX_PATTERN_DP7A_PCM_OFFSET,
+	EMX_PATTERN_DP7B_PCM_OFFSET
+};
 
-EmxDrumPart* parse_emx_drum_part(const unsigned char *p) {
-    return NULL;
+size_t emx_drum_trigger_offsets[EMX_DRUM_PART_COUNT] = {
+	EMX_PATTERN_DP1_TRIGGER_OFFSET,
+	EMX_PATTERN_DP2_TRIGGER_OFFSET,
+	EMX_PATTERN_DP3_TRIGGER_OFFSET,
+	EMX_PATTERN_DP4_TRIGGER_OFFSET,
+	EMX_PATTERN_DP5_TRIGGER_OFFSET,
+	EMX_PATTERN_DP6A_TRIGGER_OFFSET,
+	EMX_PATTERN_DP6B_TRIGGER_OFFSET,
+	EMX_PATTERN_DP7A_TRIGGER_OFFSET,
+	EMX_PATTERN_DP7B_TRIGGER_OFFSET
+};
+
+EmxDrumPart* parse_emx_drum_part(const unsigned char *p, short index) {
+    EmxDrumPart *drum_part = (EmxDrumPart *)calloc(1, sizeof(EmxDrumPart));
+
+    drum_part->pcm_index = p[emx_drum_pcm_offsets[index]];
+
+    int o = emx_drum_trigger_offsets[index];
+	int flip = 0;
+
+    for(int i = 0; i < NOTE_BANK_COUNT * NOTE_BANK_SIZE; i++) {
+		int t = o + (2*i / (EMX_PATTERN_TRIGGER_SIZE));
+        //printf(" %i " ,t);
+        drum_part->triggers[i][TRIGGER_SIZE -1] = (char)(p[t] >>  i % 8) & 0x1;
+    }
+
+    return drum_part;
 }
 
-EmxDrumPart* parse_emx_synth_part(const unsigned char *p) {
+EmxDrumPart* parse_emx_synth_part(const unsigned char *p, short index) {
     return NULL;
 }
 
@@ -208,6 +243,17 @@ EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *
     // Pattern Length
     pattern->length = (p[EMX_PATTERN_LENGTH_OFFSET] & EMX_PATTERN_LENGTH_MASK) + 1;
     printf("%i ", pattern->length);
+
+
+    for(int i = 0; i < EMX_DRUM_PART_COUNT; i++) {
+      	pattern->drum_parts[i] = *parse_emx_drum_part(p, i);
+        printf("\n        %s", pcm_drum[pattern->drum_parts[i].pcm_index]);
+        for(int j = 0; j < NOTE_BANK_COUNT * NOTE_BANK_SIZE; j++) {
+             if(j%16==0)printf(" ");
+            printf("%i",*pattern->drum_parts[i].triggers[j]);
+
+        }
+    }
 
     printf("\n");
 
