@@ -86,3 +86,36 @@ int pattern_bank_to_index(const char *pattern) {
     return bank * 64 + index - 1; // Subtracting 1 because index starts from 0
 }
 
+void index_to_note(char* result, int i) {
+    snprintf(result, sizeof(result), "___");
+    if (i >> 7) {
+        return;
+    }
+
+    char *note = malloc(3); // Allocate memory for the note string
+    switch (i % 12) {
+        case 0: strcpy(note, "C_"); break;
+        case 1: strcpy(note, "C#"); break;
+        case 2: strcpy(note, "D_"); break;
+        case 3: strcpy(note, "D#"); break;
+        case 4: strcpy(note, "E_"); break;
+        case 5: strcpy(note, "F_"); break;
+        case 6: strcpy(note, "F#"); break;
+        case 7: strcpy(note, "G_"); break;
+        case 8: strcpy(note, "G#"); break;
+        case 9: strcpy(note, "A_"); break;
+        case 10: strcpy(note, "A#"); break;
+        case 11: strcpy(note, "B_"); break;
+    }
+
+    char octave = i / 12 - 1;
+    snprintf(result, 3 + 1, "%s%01d", note, octave); // Ensure null-termination
+
+    free(note); // Free the allocated memory for the note string
+}
+
+
+int note_to_index(const char* note) {
+
+    return 0;
+}

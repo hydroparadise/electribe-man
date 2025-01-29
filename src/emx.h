@@ -21,6 +21,7 @@ typedef struct EmxDrumPart {
 } EmxDrumPart;
 
 typedef struct EmxSynthPart {
+    unsigned char note_vals[NOTE_BANK_COUNT * NOTE_BANK_SIZE][sizeof(unsigned char)];
     char notes[NOTE_BANK_COUNT * NOTE_BANK_SIZE][NOTE_LENGTH + 1];
     char triggers[NOTE_BANK_COUNT * NOTE_BANK_SIZE][TRIGGER_SIZE];
 
@@ -46,6 +47,6 @@ typedef struct EmxFile {
 int read_emx(const char *filename, EmxFile *emx_file);
 void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx) ;
 EmxDrumPart* parse_emx_drum_part(const unsigned char *p, short index);
-EmxDrumPart* parse_emx_synth_part(const unsigned char *p, short index);
+EmxSynthPart* parse_emx_synth_part(const unsigned char *p, short index);
 EmxPattern* parse_emx_pattern(const char  *path, int index, const unsigned char *p);
 void parse_emx_file(const char  *path, EmxFile *emx);

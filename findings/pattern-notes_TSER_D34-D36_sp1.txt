@@ -869,7 +869,7 @@ Difference at byte 285: Pattern1[285]:bc vs Pattern2[285]:cb
 
 
 
-Even though patern length is set to 1, could be duplicating across the other seven note banks (1-8)
+Even though pattern length is set to 1, could be duplicating across the other seven note banks (1-8)
 
 2.01
 Difference at byte 286: Pattern1[286]:bc vs Pattern2[286]:3c
