@@ -7,6 +7,48 @@
 #include "util.h"
 #include "emx.h"
 
+
+#define EMX_PATTERN_NAME_OFFSET 0
+#define EMX_PATTERN_NAME_LENGTH 8
+#define EMX_PATTERN_TEMPO_OFFSET 8
+//#define EMX_PATTERN_TEMPO_SIZE 2
+#define EMX_PATTERN_TEMPO_SHIFT 7
+#define EMX_PATTERN_TEMPO_MASK 0x0F
+#define EMX_PATTERN_LENGTH_OFFSET 11
+#define EMX_PATTERN_LENGTH_MASK 0x0F
+
+// Drum Part PCM
+#define EMX_PATTERN_DP1_PCM_OFFSET 24
+#define EMX_PATTERN_DP2_PCM_OFFSET 50
+#define EMX_PATTERN_DP3_PCM_OFFSET 76
+#define EMX_PATTERN_DP4_PCM_OFFSET 102
+#define EMX_PATTERN_DP5_PCM_OFFSET 128
+#define EMX_PATTERN_DP6A_PCM_OFFSET 154
+#define EMX_PATTERN_DP6B_PCM_OFFSET 180
+#define EMX_PATTERN_DP7A_PCM_OFFSET 206
+#define EMX_PATTERN_DP7B_PCM_OFFSET 232
+#define EMX_PATTERN_PCM_SIZE 1
+
+// Drum Part Triggers
+#define EMX_PATTERN_DP1_TRIGGER_OFFSET 34
+#define EMX_PATTERN_DP2_TRIGGER_OFFSET 60
+#define EMX_PATTERN_DP3_TRIGGER_OFFSET 86
+#define EMX_PATTERN_DP4_TRIGGER_OFFSET 112
+#define EMX_PATTERN_DP5_TRIGGER_OFFSET 138
+#define EMX_PATTERN_DP6A_TRIGGER_OFFSET 164
+#define EMX_PATTERN_DP6B_TRIGGER_OFFSET 190
+#define EMX_PATTERN_DP7A_TRIGGER_OFFSET 216
+#define EMX_PATTERN_DP7B_TRIGGER_OFFSET 242
+#define EMX_PATTERN_TRIGGER_SIZE 16
+
+// Synth Parts
+#define EMX_PATTERN_SP1_NOTE_OFFSET 278
+#define EMX_PATTERN_SP2_NOTE_OFFSET 554
+#define EMX_PATTERN_SP3_NOTE_OFFSET 830
+#define EMX_PATTERN_SP4_NOTE_OFFSET 1106
+#define EMX_PATTERN_SP5_NOTE_OFFSET 1382
+
+
 const char pcm_drum[PCM_DRUM_COUNT][PCM_NAME_LENGTH + 1] = {
   "BD-Dark \0",  "BD-99 1 \0",  "BD-99 2 \0",  "BD-Syn1 \0",  "BD-Syn2 \0",  "BD-Syn3 \0",  "BD-Syn4 \0",  "BD-Syn5 \0",
   "BD-Syn6 \0",  "BD-Syn7 \0",  "BD-Syn8 \0",  "BD-Syn9 \0",  "BD-Syn10\0",  "BD-Dist1\0",  "BD-Dist2\0",  "BD-Dist3\0",
@@ -58,7 +100,7 @@ void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx)
 
     for (size_t i = 0; i < EMX_PATTERN_DATA_SIZE; ++i) {
 
-        if (emx->patterns[idx1][i] != emx->patterns[idx2][i]) {
+        if (emx->pattern_data[idx1][i] != emx->pattern_data[idx2][i]) {
             printf("\n");
             printf("Byte offset: %4zu ", i); printf("\n");
 
@@ -66,19 +108,19 @@ void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx)
             int abs_pos2 = EMX_HEADER_SIZE + (EMX_PATTERN_DATA_SIZE * idx2 + i);
 
             printf("  P1 %06x: ", abs_pos1);
-            printf("%02X ", emx->patterns[idx1][i]);
-            print_binary(emx->patterns[idx1][i]);
-            printf("%*u ", 3, emx->patterns[idx1][i]);
-            printf("%*d ", 4, (char)emx->patterns[idx1][i]);
-            print_char(emx->patterns[idx1][i]);
+            printf("%02X ", emx->pattern_data[idx1][i]);
+            print_binary(emx->pattern_data[idx1][i]);
+            printf("%*u ", 3, emx->pattern_data[idx1][i]);
+            printf("%*d ", 4, (char)emx->pattern_data[idx1][i]);
+            print_char(emx->pattern_data[idx1][i]);
             printf("\n");
 
             printf("  P2 %06x: ", abs_pos2);
-            printf("%02X ", emx->patterns[idx2][i]);
-            print_binary(emx->patterns[idx2][i]);
-            printf("%*u ", 3, emx->patterns[idx2][i]);
-            printf("%*i ", 4, (char)emx->patterns[idx2][i]);
-            print_char(emx->patterns[idx2][i]);
+            printf("%02X ", emx->pattern_data[idx2][i]);
+            print_binary(emx->pattern_data[idx2][i]);
+            printf("%*u ", 3, emx->pattern_data[idx2][i]);
+            printf("%*i ", 4, (char)emx->pattern_data[idx2][i]);
+            print_char(emx->pattern_data[idx2][i]);
             printf("\n");
         }
     }
@@ -86,7 +128,6 @@ void compare_emx_bank_pattern_data(const char *p1, const char *p2, EmxFile *emx)
 
 
 int read_emx(const char *filename, EmxFile *emx_file) {
-
     FILE *file = fopen(filename, "rb");
 
     if (!file) {
@@ -102,67 +143,106 @@ int read_emx(const char *filename, EmxFile *emx_file) {
         return EXIT_FAILURE;
     }
 
-
-  // Read patterns
+    // Read pattern_data
     for (int i = 0; i < PATTERN_COUNT; ++i) {
 
-        bytesRead = fread(emx_file->patterns[i], 1, EMX_PATTERN_DATA_SIZE, file);
+        bytesRead = fread(emx_file->pattern_data[i], 1, EMX_PATTERN_DATA_SIZE, file);
         if (bytesRead != EMX_PATTERN_DATA_SIZE) {
             perror("Error reading pattern data");
             fclose(file);
             return EXIT_FAILURE;
         }
     }
-
     fclose(file);
     return EXIT_SUCCESS;
 }
 
 
+void init_emx_synth_part(EmxSynthPart* part) {
+    if (part == NULL) return;
+
+    // Initialize note values array
+    memset(part->note_vals, 0, sizeof(part->note_vals));
+
+    // Initialize notes strings to empty
+    for (int i = 0; i < NOTE_BANK_COUNT * NOTE_BANK_SIZE; ++i) {
+        part->notes[i][0] = '\0';  // Empty string with null terminator
+    }
+
+    // Initialize triggers array
+    memset(part->triggers, 0, sizeof(part->triggers));
+}
+
+void init_emx_drum_part(EmxDrumPart* part) {
+    if (part == NULL) return;
+
+    // Set default PCM index to -1 or another default value as needed
+    part->pcm_index = -1;
+
+    // Initialize triggers array with all elements set to 0 (off)
+    memset(part->triggers, 0, sizeof(part->triggers));
+}
+
+void init_emx_pattern(EmxPattern* pattern) {
+    if (pattern == NULL) return;
+
+    // Initialize basic fields
+    memset(pattern->filename, 0, sizeof(pattern->filename));
+    memset(pattern->bank, 0, sizeof(pattern->bank));
+    memset(pattern->name, 0, sizeof(pattern->name));
+
+    pattern->length = 0;  // Default length
+    pattern->tempo = 0;   // Default tempo
+
+    // Initialize synth parts
+    for (int i = 0; i < EMX_SYNTH_PART_COUNT; ++i) {
+        init_emx_synth_part(&pattern->synth_parts[i]);
+    }
+
+    // Initialize drum parts
+    for (int i = 0; i < EMX_DRUM_PART_COUNT; ++i) {
+        init_emx_drum_part(&pattern->drum_parts[i]);
+    }
+}
 
 
-#define EMX_PATTERN_NAME_OFFSET 0
-#define EMX_PATTERN_NAME_LENGTH 8
+void free_emx_synth_part(EmxSynthPart* part) {
+    if (part == NULL) return;
 
-#define EMX_PATTERN_TEMPO_OFFSET 8
-//#define EMX_PATTERN_TEMPO_SIZE 2
-#define EMX_PATTERN_TEMPO_SHIFT 7
-#define EMX_PATTERN_TEMPO_MASK 0x0F
+    // Note: Since these are fixed-size arrays within the struct,
+    // no dynamic memory was allocated for them. Just clear their contents.
 
-#define EMX_PATTERN_LENGTH_OFFSET 11
-#define EMX_PATTERN_LENGTH_MASK 0x0F
+    memset(part->note_vals, 0, sizeof(part->note_vals));
+    memset(part->notes, 0, sizeof(part->notes));
+    memset(part->triggers, 0, sizeof(part->triggers));
+}
 
+void free_emx_drum_part(EmxDrumPart* part) {
+    if (part == NULL) return;
 
-// Drum Part PCM
-#define EMX_PATTERN_DP1_PCM_OFFSET 24
-#define EMX_PATTERN_DP2_PCM_OFFSET 50
-#define EMX_PATTERN_DP3_PCM_OFFSET 76
-#define EMX_PATTERN_DP4_PCM_OFFSET 102
-#define EMX_PATTERN_DP5_PCM_OFFSET 128
-#define EMX_PATTERN_DP6A_PCM_OFFSET 154
-#define EMX_PATTERN_DP6B_PCM_OFFSET 180
-#define EMX_PATTERN_DP7A_PCM_OFFSET 206
-#define EMX_PATTERN_DP7B_PCM_OFFSET 232
-#define EMX_PATTERN_PCM_SIZE 1
+    // Clear PCM index
+    part->pcm_index = -1;
 
-// Drum Part Triggers
-#define EMX_PATTERN_DP1_TRIGGER_OFFSET 34
-#define EMX_PATTERN_DP2_TRIGGER_OFFSET 60
-#define EMX_PATTERN_DP3_TRIGGER_OFFSET 86
-#define EMX_PATTERN_DP4_TRIGGER_OFFSET 112
-#define EMX_PATTERN_DP5_TRIGGER_OFFSET 138
-#define EMX_PATTERN_DP6A_TRIGGER_OFFSET 164
-#define EMX_PATTERN_DP6B_TRIGGER_OFFSET 190
-#define EMX_PATTERN_DP7A_TRIGGER_OFFSET 216
-#define EMX_PATTERN_DP7B_TRIGGER_OFFSET 242
-#define EMX_PATTERN_TRIGGER_SIZE 16
+    // Clear triggers array
+    memset(part->triggers, 0, sizeof(part->triggers));
+}
 
-// Synth Parts
-#define EMX_PATTERN_SP1_NOTE_OFFSET 278
-#define EMX_PATTERN_SP2_NOTE_OFFSET 554
-#define EMX_PATTERN_SP3_NOTE_OFFSET 830
-#define EMX_PATTERN_SP4_NOTE_OFFSET 1106
-#define EMX_PATTERN_SP5_NOTE_OFFSET 1382
+void free_emx_pattern(EmxPattern* pattern) {
+    if (pattern == NULL) return;
+
+    // Free synth parts
+    for (int i = 0; i < EMX_SYNTH_PART_COUNT; ++i) {
+        free_emx_synth_part(&pattern->synth_parts[i]);
+    }
+
+    // Free drum parts
+    for (int i = 0; i < EMX_DRUM_PART_COUNT; ++i) {
+        free_emx_drum_part(&pattern->drum_parts[i]);
+    }
+
+    // Clear other fields if necessary
+    memset(pattern, 0, sizeof(EmxPattern));
+}
 
 
 size_t emx_drum_pcm_offsets[EMX_DRUM_PART_COUNT] = {
@@ -189,22 +269,6 @@ size_t emx_drum_trigger_offsets[EMX_DRUM_PART_COUNT] = {
 	EMX_PATTERN_DP7B_TRIGGER_OFFSET
 };
 
-size_t emx_synth_notes_offsets[EMX_SYNTH_PART_COUNT] = {
-    EMX_PATTERN_SP1_NOTE_OFFSET,
-    EMX_PATTERN_SP2_NOTE_OFFSET,
-    EMX_PATTERN_SP3_NOTE_OFFSET,
-    EMX_PATTERN_SP4_NOTE_OFFSET,
-    EMX_PATTERN_SP5_NOTE_OFFSET
-};
-
-
-void init_emx_drum_part(EmxDrumPart *drum_part) {
-    drum_part->pcm_index = 0; // or however you determine this value
-    for (int i = 0; i < NOTE_BANK_COUNT * NOTE_BANK_SIZE; i++) {
-        drum_part->triggers[i][TRIGGER_SIZE - 1] = 0; // Initialize to zero or appropriate default
-    }
-}
-
 EmxDrumPart* parse_emx_drum_part(const unsigned char *p, short index) {
     EmxDrumPart *drum_part = (EmxDrumPart *)calloc(1, sizeof(EmxDrumPart));
     drum_part->pcm_index = p[emx_drum_pcm_offsets[index]];
@@ -218,14 +282,13 @@ EmxDrumPart* parse_emx_drum_part(const unsigned char *p, short index) {
     return drum_part;
 }
 
-void init_emx_synth_part(EmxSynthPart *synth_part) {
-    for (int i = 0; i < NOTE_BANK_COUNT * NOTE_BANK_SIZE; i++) {
-        synth_part->note_vals[i][sizeof(unsigned char)] = 0; // Initialize to zero or appropriate default
-        synth_part->notes[i][NOTE_LENGTH] = '\0';
-        synth_part->triggers[i][TRIGGER_SIZE - 1] = 0;
-    }
-}
-
+size_t emx_synth_notes_offsets[EMX_SYNTH_PART_COUNT] = {
+    EMX_PATTERN_SP1_NOTE_OFFSET,
+    EMX_PATTERN_SP2_NOTE_OFFSET,
+    EMX_PATTERN_SP3_NOTE_OFFSET,
+    EMX_PATTERN_SP4_NOTE_OFFSET,
+    EMX_PATTERN_SP5_NOTE_OFFSET
+};
 
 EmxSynthPart* parse_emx_synth_part(const unsigned char *p, short index) {
     EmxSynthPart *synth_part = (EmxSynthPart *)calloc(1, sizeof(EmxSynthPart));
@@ -238,27 +301,12 @@ EmxSynthPart* parse_emx_synth_part(const unsigned char *p, short index) {
     for (int i = 0; i < NOTE_BANK_COUNT * NOTE_BANK_SIZE; i++) {
         int t = o + i;
         synth_part->triggers[i][TRIGGER_SIZE - 1] = !(p[t] >> 7);
-        synth_part->note_vals[i][sizeof(unsigned char)] = p[t] & 0x7F;
+        synth_part->note_vals[i][0] = p[t] & 0x7F;
         index_to_note(synth_part->notes[i], p[t]);
+
     }
     return synth_part;
 }
-
-
-void init_emx_pattern(EmxPattern *pattern) {
-    pattern->filename[EMX_FILENAME_MAX] = '\0'; // Null-terminate the string
-    pattern->bank[PATTERN_BANK_LENGTH] = '\0'; // Null-terminate the string
-    pattern->name[PATTERN_NAME_LENGTH] = '\0'; // Null-terminate the string
-    pattern->length = 0; // or however you determine this value
-    pattern->tempo = 0; // or however you determine this value
-    for (int i = 0; i < EMX_SYNTH_PART_COUNT; i++) {
-        init_emx_synth_part(&pattern->synth_parts[i]);
-    }
-    for (int i = 0; i < EMX_DRUM_PART_COUNT; i++) {
-        init_emx_drum_part(&pattern->drum_parts[i]);
-    }
-}
-
 
 EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *p) {
 
@@ -271,7 +319,6 @@ EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *
     printf("\n");
 
 	init_emx_pattern(pattern);
-
 
     // File name
     snprintf(pattern->filename, sizeof(pattern->filename), "%s", get_filename(path));
@@ -314,7 +361,6 @@ EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *
     // Synth Parts
 	for(int i = 0; i < EMX_SYNTH_PART_COUNT; i++) {
         pattern->synth_parts[i] = *parse_emx_synth_part(p, i);
-		init_emx_synth_part(&pattern->synth_parts[i]);
         printf("\n");
 		printf("        Synth %u ", i+1);
         for (int j = 0; j < NOTE_BANK_COUNT * NOTE_BANK_SIZE; j++) {
@@ -322,7 +368,6 @@ EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *
                 printf(" \n");
                 printf("                ");
             }
-
             printf(" %s", pattern->synth_parts[i].notes[j]);
         }
     }
@@ -334,9 +379,9 @@ EmxPattern* parse_emx_pattern(const char *path, int index, const unsigned char *
 void parse_emx_file(const char *path, EmxFile *emx) {
     printf("FileName     Bank Name     BPM   Len\n");
     for (int i = 0; i < PATTERN_COUNT; ++i) {
-        EmxPattern *pattern = parse_emx_pattern(path, i, emx->patterns[i]);
+        EmxPattern *pattern = parse_emx_pattern(path, i, emx->pattern_data[i]);
         if (pattern) {
-            free(pattern); // Free the allocated memory for the pattern structure
+            free_emx_pattern(pattern);
         }
     }
 }
